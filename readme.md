@@ -1,0 +1,2 @@
+[![CircleCI](https://circleci.com/gh/mcontado/Android-HelloWorld.svg?style=svg)](https://circleci.com/gh/mcontado/Android-HelloWorld)
+[![codecov](https://codecov.io/gh/mcontado/Android-HelloWorld/branch/master/graph/badge.svg)](https://codecov.io/gh/mcontado/Android-HelloWorld)
