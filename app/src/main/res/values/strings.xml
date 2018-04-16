@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">MyFirstApp</string>
     <string name="hello_world">Hello World!</string>
-    <string name="lastname_firstname_date">Contado, Maria 4/8/2018</string>
-    <string name="one_button">Press Me</string>
+    <string name="lastname_firstname_date">Contado, Maria 4/15/2018</string>
+    <string name="submit_button">Submit</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_email">Enter email address</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_age">Enter age</string>
+    <string name="enter_birthdate">Enter birthdate</string>
+    <string name="back_button">Back to Main</string>
+    <string name="thanks_signing">Thanks for signing</string>
+    <string name="select_date">SELECT DATE</string>
 </resources>
