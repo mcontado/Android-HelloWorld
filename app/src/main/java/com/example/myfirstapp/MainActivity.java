@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         currentDate = Calendar.getInstance();
 
-        setDateTimeField();
+        setBirthDateField();
     }
 
-    private void setDateTimeField() {
+    private void setBirthDateField() {
         birthDateEditText.setOnClickListener(this);
 
         final Calendar newCalendar = Calendar.getInstance();

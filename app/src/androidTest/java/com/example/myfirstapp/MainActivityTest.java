@@ -4,6 +4,9 @@ import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.DatePicker;
+
+import org.hamcrest.Matchers;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,6 +18,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtra;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
@@ -39,8 +43,13 @@ public class MainActivityTest {
 
         onView(withId(R.id.birthDateEditText)).perform(click());
         // TODO: Crashing when calling PickerActions for setting date
-        onView(withId(R.id.birthDateEditText))
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
                 .perform(PickerActions.setDate(year, month + 1, day));
+        // ERROR: android.support.test.espresso.NoMatchingViewException: No views in hierarchy found matching: with class name: "android.widget.DatePicker"
+
+        onView(withId(R.id.birthDateEditText))
+                .perform(PickerActions.setDate(year, month, day));
+        // ERROR: android.support.test.espresso.PerformException: Error performing 'set date' on view 'with id: com.example.myfirstapp:id/birthDateEditText'.
 
         Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
