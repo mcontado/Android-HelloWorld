@@ -62,14 +62,17 @@ public class MainActivityTest {
         onView(withId(R.id.submitButtonId)).perform(click());
         intended(hasComponent(SecondActivity.class.getName()));
         intended(hasExtra(Constants.KEY_NAME, "Maria Contado"));
+        Intents.release();
 
         onView(withId(R.id.thanksTextView))
                 .check(matches(withText(Constants.THANKS_SIGN + "Maria Contado")));
+
+        Intents.init();
         onView(withId(R.id.backToMainBtnId)).perform(click());
         intended(hasComponent(MainActivity.class.getName()));
-        checkFormIsEmptyForNewProfile();
-
         Intents.release();
+
+        checkFormIsEmptyForNewProfile();
     }
 
     private void checkFormIsEmptyForNewProfile() {
