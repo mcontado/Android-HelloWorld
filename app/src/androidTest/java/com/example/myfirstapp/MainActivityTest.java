@@ -7,12 +7,12 @@ import android.support.test.runner.AndroidJUnit4;
 import android.widget.DatePicker;
 
 import org.hamcrest.Matchers;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
@@ -29,41 +29,61 @@ public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> testRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Ignore("Crashing when providing date on date picker dialog")
     @Test
-    public void testSubmitButton_ShouldValidateForm_HappyPath() {
+    public void testSubmitButton_ShouldValidateForm() {
+        onView(withId(R.id.textViewNameDateId))
+                .check(matches(withText(R.string.lastname_firstname_date)));
         onView(withId(R.id.nameEditText)).perform(typeText("Maria Contado"));
         onView(withId(R.id.emailEditText)).perform(typeText("test@gmail.com"));
         onView(withId(R.id.userNameEditText)).perform(typeText("mcontado"));
-        onView(withId(R.id.ageEditText)).perform(typeText("20"));
+        onView(withId(R.id.ageEditText)).perform(typeText("18"));
 
         int year = 2000;
         int month = 4;
         int day = 15;
 
-        onView(withId(R.id.birthDateEditText)).perform(click());
-        // TODO: Crashing when calling PickerActions for setting date
+        onView(withId(R.id.birthDateButtonId)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                .perform(PickerActions.setDate(year, month + 1, day));
-        // ERROR: android.support.test.espresso.NoMatchingViewException: No views in hierarchy found matching: with class name: "android.widget.DatePicker"
-
-        onView(withId(R.id.birthDateEditText))
                 .perform(PickerActions.setDate(year, month, day));
-        // ERROR: android.support.test.espresso.PerformException: Error performing 'set date' on view 'with id: com.example.myfirstapp:id/birthDateEditText'.
+        onView(withText("OK")).perform(click());
+        onView(withId(R.id.birthDateTextView)).check(matches(withText("15/4/2000")));
+
+        TestUtils.rotateScreen(testRule.getActivity());
+
+        // Make sure text view still has birth date after screen rotation
+        onView(withId(R.id.birthDateTextView))
+                .check(matches(withText("15/4/2000")));
+
+        TestUtils.rotateScreen(testRule.getActivity());
+
+        onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
         Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
         intended(hasComponent(SecondActivity.class.getName()));
         intended(hasExtra(Constants.KEY_NAME, "Maria Contado"));
-        Intents.release();
 
-        onView(withId(R.id.textViewNameDateId))
-                .check(matches(withText(R.string.lastname_firstname_date)));
+        onView(withId(R.id.thanksTextView))
+                .check(matches(withText(Constants.THANKS_SIGN + "Maria Contado")));
+        onView(withId(R.id.backToMainBtnId)).perform(click());
+        intended(hasComponent(MainActivity.class.getName()));
+        checkFormIsEmptyForNewProfile();
+
+        Intents.release();
+    }
+
+    private void checkFormIsEmptyForNewProfile() {
+        onView(withId(R.id.nameEditText)).check(matches(withText("")));
+        onView(withId(R.id.emailEditText)).check(matches(withText("")));
+        onView(withId(R.id.userNameEditText)).check(matches(withText("")));
+        onView(withId(R.id.ageEditText)).check(matches(withText("")));
+        onView(withId(R.id.birthDateTextView)).check(matches(withText("")));
     }
 
     @Test
     public void testSubmitButton_WithEmptyName_ShouldNotProceed() {
         onView(withId(R.id.nameEditText)).perform(typeText(""));
+        onView(withId(R.id.nameEditText)).perform(closeSoftKeyboard());
 
         Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
@@ -78,6 +98,7 @@ public class MainActivityTest {
     public void testSubmitButton_WithEmptyEmail_ShouldNotProceed() {
         onView(withId(R.id.nameEditText)).perform(typeText("TestName"));
         onView(withId(R.id.emailEditText)).perform(typeText(""));
+        onView(withId(R.id.emailEditText)).perform(closeSoftKeyboard());
 
         Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
@@ -94,6 +115,7 @@ public class MainActivityTest {
     public void testSubmitButton_WithInvalidEmail_ShouldNotProceed() {
         onView(withId(R.id.nameEditText)).perform(typeText("TestName"));
         onView(withId(R.id.emailEditText)).perform(typeText("aaa"));
+        onView(withId(R.id.emailEditText)).perform(closeSoftKeyboard());
 
         Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
@@ -109,6 +131,7 @@ public class MainActivityTest {
         onView(withId(R.id.nameEditText)).perform(typeText("TestName"));
         onView(withId(R.id.emailEditText)).perform(typeText("test@gmail.com"));
         onView(withId(R.id.userNameEditText)).perform(typeText(""));
+        onView(withId(R.id.userNameEditText)).perform(closeSoftKeyboard());
 
         Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
@@ -124,6 +147,7 @@ public class MainActivityTest {
         onView(withId(R.id.emailEditText)).perform(typeText("test@gmail.com"));
         onView(withId(R.id.userNameEditText)).perform(typeText("userName"));
         onView(withId(R.id.ageEditText)).perform(typeText(""));
+        onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
         Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
@@ -140,6 +164,7 @@ public class MainActivityTest {
         onView(withId(R.id.emailEditText)).perform(typeText("test@gmail.com"));
         onView(withId(R.id.userNameEditText)).perform(typeText("userName"));
         onView(withId(R.id.ageEditText)).perform(typeText("17"));
+        onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
         Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
@@ -156,6 +181,7 @@ public class MainActivityTest {
         onView(withId(R.id.emailEditText)).perform(typeText("test@gmail.com"));
         onView(withId(R.id.userNameEditText)).perform(typeText("userName"));
         onView(withId(R.id.ageEditText)).perform(typeText("20"));
+        onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
         Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());

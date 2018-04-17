@@ -7,8 +7,13 @@
     <string name="enter_email">Enter email address</string>
     <string name="enter_username">Enter username</string>
     <string name="enter_age">Enter age</string>
-    <string name="enter_birthdate">Enter birthdate</string>
+    <string name="enter_birthdate">dd/MM/yyyy</string>
     <string name="back_button">Back to Main</string>
     <string name="thanks_signing">Thanks for signing</string>
     <string name="select_date">SELECT DATE</string>
+    <string name="nameText">Name</string>
+    <string name="emailText">Email</string>
+    <string name="userNameText">Username</string>
+    <string name="ageText">Age</string>
+    <string name="birthDateButtonText">Birth Date</string>
 </resources>

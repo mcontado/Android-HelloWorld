@@ -38,10 +38,4 @@ public class TestUtils {
             throw new RuntimeException("Screen rotation failed", e);
         }
     }
-
-    public static void setDate(int datePickerLaunchViewId, int year, int monthOfYear, int dayOfMonth) {
-        onView(withId(datePickerLaunchViewId)).perform(click());
-        //onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-        // .perform(PickerActions.setDate(year, monthOfYear, dayOfMonth));
-    }
 }

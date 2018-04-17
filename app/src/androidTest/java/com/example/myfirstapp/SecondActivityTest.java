@@ -42,7 +42,6 @@ public class SecondActivityTest {
         Intents.init();
         onView(withId(R.id.backToMainBtnId)).perform(click());
         intended(hasComponent(MainActivity.class.getName()));
-        // TODO: how to verify that the form of the main is empty
         Intents.release();
     }
 }
