@@ -62,12 +62,10 @@ public class MainActivityTest {
         onView(withId(R.id.submitButtonId)).perform(click());
         intended(hasComponent(SecondActivity.class.getName()));
         intended(hasExtra(Constants.KEY_NAME, "Maria Contado"));
-        Intents.release();
 
         onView(withId(R.id.thanksTextView))
                 .check(matches(withText(Constants.THANKS_SIGN + "Maria Contado")));
 
-        Intents.init();
         onView(withId(R.id.backToMainBtnId)).perform(click());
         intended(hasComponent(MainActivity.class.getName()));
         Intents.release();
@@ -88,9 +86,7 @@ public class MainActivityTest {
         onView(withId(R.id.nameEditText)).perform(typeText(""));
         onView(withId(R.id.nameEditText)).perform(closeSoftKeyboard());
 
-        Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
-        Intents.release();
 
         onView(withId(R.id.errorMsgTextView))
                 .check(matches(withText(Constants.NAME_EMPTY_OR_NULL)));
@@ -103,9 +99,7 @@ public class MainActivityTest {
         onView(withId(R.id.emailEditText)).perform(typeText(""));
         onView(withId(R.id.emailEditText)).perform(closeSoftKeyboard());
 
-        Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
-        Intents.release();
 
         onView(withId(R.id.errorMsgTextView))
                 .check(matches(withText(Constants.EMAIL_EMPTY_OR_NULL)));
@@ -120,9 +114,7 @@ public class MainActivityTest {
         onView(withId(R.id.emailEditText)).perform(typeText("aaa"));
         onView(withId(R.id.emailEditText)).perform(closeSoftKeyboard());
 
-        Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
-        Intents.release();
 
         onView(withId(R.id.errorMsgTextView))
                 .check(matches(withText(Constants.EMAIL_IS_INVALID)));
@@ -136,9 +128,7 @@ public class MainActivityTest {
         onView(withId(R.id.userNameEditText)).perform(typeText(""));
         onView(withId(R.id.userNameEditText)).perform(closeSoftKeyboard());
 
-        Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
-        Intents.release();
 
         onView(withId(R.id.errorMsgTextView))
                 .check(matches(withText(Constants.USERNAME_EMPTY_OR_NULL)));
@@ -152,9 +142,7 @@ public class MainActivityTest {
         onView(withId(R.id.ageEditText)).perform(typeText(""));
         onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
-        Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
-        Intents.release();
 
         onView(withId(R.id.errorMsgTextView))
                 .check(matches(withText(Constants.AGE_EMPTY_OR_NULL)));
@@ -169,9 +157,7 @@ public class MainActivityTest {
         onView(withId(R.id.ageEditText)).perform(typeText("17"));
         onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
-        Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
-        Intents.release();
 
         onView(withId(R.id.errorMsgTextView))
                 .check(matches(withText(Constants.UNDER_18_NOT_ALLOWED)));
@@ -186,9 +172,7 @@ public class MainActivityTest {
         onView(withId(R.id.ageEditText)).perform(typeText("20"));
         onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
-        Intents.init();
         onView(withId(R.id.submitButtonId)).perform(click());
-        Intents.release();
 
         onView(withId(R.id.errorMsgTextView))
                 .check(matches(withText(Constants.BIRTH_DATE_EMPTY_OR_NULL)));
