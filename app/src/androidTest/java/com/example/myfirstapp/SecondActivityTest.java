@@ -36,12 +36,4 @@ public class SecondActivityTest {
         onView(withId(R.id.thanksTextView))
                 .check(matches(withText(Constants.THANKS_SIGN + "Test Name")));
     }
-
-    @Test
-    public void canGoToMainActivity() {
-        Intents.init();
-        onView(withId(R.id.backToMainBtnId)).perform(click());
-        intended(hasComponent(MainActivity.class.getName()));
-        Intents.release();
-    }
 }
