@@ -47,18 +47,6 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_username"/>
 
-    <TextView
-        android:id="@+id/ageTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ageText" />
-    <EditText
-        android:id="@+id/ageEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/enter_age"/>
-
-
     <Button
         android:id="@+id/birthDateButtonId"
         android:layout_width="wrap_content"
@@ -70,6 +58,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enter_birthdate"/>
+
+    <TextView
+        android:id="@+id/ageTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ageText" />
+    <EditText
+        android:id="@+id/ageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_age" />
 
     <Button
         android:id="@+id/submitButtonId"

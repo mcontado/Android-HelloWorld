@@ -6,7 +6,7 @@
     <string name="enter_name">Enter Name</string>
     <string name="enter_email">Enter email address</string>
     <string name="enter_username">Enter username</string>
-    <string name="enter_age">Enter age</string>
+    <string name="enter_age">Enter age via birth date button</string>
     <string name="enter_birthdate">dd/MM/yyyy</string>
     <string name="back_button">Back to Main</string>
     <string name="thanks_signing">Thanks for signing</string>

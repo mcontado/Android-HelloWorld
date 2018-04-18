@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         emailEditText = findViewById(R.id.emailEditText);
         userNameEditText = findViewById(R.id.userNameEditText);
         ageEditText = findViewById(R.id.ageEditText);
+        ageEditText.setEnabled(false);
 
         birthDateTextView = findViewById(R.id.birthDateTextView);
 
@@ -97,9 +98,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param errorConstant
      * @return true or false.
      */
-    private boolean validateForm(EditText editText,
-                              StringBuilder errorMessage,
-                              String errorConstant) {
+    private boolean validateField(EditText editText,
+                                  StringBuilder errorMessage,
+                                  String errorConstant) {
         if (editText == null || editText.getText().toString().length() == 0) {
             errorMessage.append(errorConstant);
         }
@@ -131,11 +132,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isValidForm() {
         StringBuilder errorMessage = new StringBuilder();
 
-        return validateForm(nameEditText, errorMessage, Constants.NAME_EMPTY_OR_NULL) &&
-                validateForm(emailEditText, errorMessage, Constants.EMAIL_EMPTY_OR_NULL) &&
-                validateForm(userNameEditText, errorMessage, Constants.USERNAME_EMPTY_OR_NULL) &&
-                validateForm(ageEditText, errorMessage, Constants.AGE_EMPTY_OR_NULL) &&
-                validateBirthDate(errorMessage);
+        final boolean isValidName = validateField(nameEditText, errorMessage, Constants.NAME_EMPTY_OR_NULL);
+        final boolean isValidEmail = validateField(emailEditText, errorMessage, Constants.EMAIL_EMPTY_OR_NULL);
+        final boolean isValidUserName = validateField(userNameEditText, errorMessage, Constants.USERNAME_EMPTY_OR_NULL);
+        final boolean isValidBirthDate = validateBirthDate(errorMessage);
+        final boolean isValidAge = validateField(ageEditText, errorMessage, Constants.AGE_EMPTY_OR_NULL);
+
+        return isValidName && isValidEmail && isValidUserName && isValidBirthDate && isValidAge;
     }
 
     public boolean validateBirthDate(StringBuilder errorMessage) {
