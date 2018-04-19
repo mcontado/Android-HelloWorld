@@ -14,7 +14,6 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
@@ -31,7 +30,7 @@ public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> testRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Ignore("Ignoring this test for now, it works when on debug mode but crashing on run mode")
+    //@Ignore("Ignoring this test for now, it works when on debug mode but crashing on run mode")
     @Test
     public void testSubmitButton_ShouldValidateForm() {
         onView(withId(R.id.textViewNameDateId))
