@@ -1,13 +1,11 @@
 package com.example.myfirstapp;
 
 import android.support.test.espresso.contrib.PickerActions;
-import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.DatePicker;
 
 import org.hamcrest.Matchers;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,9 +14,6 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.intent.Intents.intended;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -30,7 +25,6 @@ public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> testRule = new ActivityTestRule<>(MainActivity.class);
 
-    //@Ignore("Ignoring this test for now, it works when on debug mode but crashing on run mode")
     @Test
     public void testSubmitButton_ShouldValidateForm() {
         onView(withId(R.id.textViewNameDateId))
@@ -54,28 +48,8 @@ public class MainActivityTest {
 
         TestUtils.rotateScreen(testRule.getActivity());
 
-        Intents.init();
-        onView(withId(R.id.submitButtonId)).perform(click());
-        intended(hasComponent(SecondActivity.class.getName()));
-        intended(hasExtra(Constants.KEY_NAME, "Maria Contado"));
-
-        onView(withId(R.id.thanksTextView))
-                .check(matches(withText(Constants.THANKS_SIGN + "Maria Contado")));
-
-        onView(withId(R.id.backToMainBtnId)).perform(click());
-        intended(hasComponent(MainActivity.class.getName()));
-        Intents.release();
-
-        checkFormIsEmptyForNewProfile();
     }
 
-    private void checkFormIsEmptyForNewProfile() {
-        onView(withId(R.id.nameEditText)).check(matches(withText("")));
-        onView(withId(R.id.emailEditText)).check(matches(withText("")));
-        onView(withId(R.id.userNameEditText)).check(matches(withText("")));
-        onView(withId(R.id.ageEditText)).check(matches(withText("")));
-        onView(withId(R.id.birthDateTextView)).check(matches(withText("")));
-    }
 
     @Test
     public void testSubmitButton_WithEmptyForm_ShouldNotProceed() {

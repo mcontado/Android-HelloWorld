@@ -14,6 +14,7 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
@@ -35,5 +36,21 @@ public class SecondActivityTest {
     public void setsRightMessageBasedOnIntentExtra() {
         onView(withId(R.id.thanksTextView))
                 .check(matches(withText(Constants.THANKS_SIGN + "Test Name")));
+
+        Intents.init();
+        onView(withId(R.id.backToMainBtnId)).perform(click());
+        intended(hasComponent(MainActivity.class.getName()));
+        Intents.release();
+
+        checkFormIsEmptyForNewProfile();
+
+    }
+
+    private void checkFormIsEmptyForNewProfile() {
+        onView(withId(R.id.nameEditText)).check(matches(withText("")));
+        onView(withId(R.id.emailEditText)).check(matches(withText("")));
+        onView(withId(R.id.userNameEditText)).check(matches(withText("")));
+        onView(withId(R.id.ageEditText)).check(matches(withText("")));
+        onView(withId(R.id.birthDateTextView)).check(matches(withText("")));
     }
 }

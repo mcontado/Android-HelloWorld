@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -168,5 +169,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(Constants.KEY_BDATE, birthDateTextView.getText().toString());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        clearFormFields();
+    }
+
+    private void clearFormFields() {
+        nameEditText.setText("");
+        emailEditText.setText("");
+        userNameEditText.setText("");
+        ageEditText.setText("");
+        birthDateTextView.setText("");
     }
 }
