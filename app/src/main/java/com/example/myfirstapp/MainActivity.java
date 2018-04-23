@@ -1,7 +1,9 @@
 package com.example.myfirstapp;
 
+import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -72,9 +76,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
                             Calendar newDate = Calendar.getInstance();
-                            newDate.set(year, monthOfYear, dayOfMonth);
+                            newDate.set(year, monthOfYear + 1, dayOfMonth);
 
-                            int age = currentDate.get(Calendar.YEAR) - newDate.get(Calendar.YEAR);
+                            int age = calculateCurrentAge(newDate);
                             ageEditText.setText(String.valueOf(age));
                             birthDateTextView.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                         }
@@ -90,6 +94,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra(Constants.KEY_NAME, nameEditText.getText().toString());
             startActivity(intent);
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.O)
+    private int calculateCurrentAge(Calendar inputBirthDate) {
+        LocalDate today = LocalDate.now();
+        LocalDate birthDay = LocalDate.of(inputBirthDate.get(Calendar.YEAR),
+                                         inputBirthDate.get(Calendar.MONTH),
+                                         inputBirthDate.get(Calendar.DAY_OF_MONTH));
+        Period period = Period.between(birthDay, today);
+        return period.getYears();
     }
 
     /**

@@ -9,6 +9,7 @@ import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import java.util.Calendar;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
@@ -68,12 +69,12 @@ public class MainActivityTest {
         onView(withId(R.id.nameEditText)).perform(typeText(""));
         onView(withId(R.id.emailEditText)).perform(typeText("test@email.com"));
         onView(withId(R.id.userNameEditText)).perform(typeText("mcontado"));
+        onView(withId(R.id.userNameEditText)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.birthDateButtonId)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                .perform(PickerActions.setDate(2000, 4, 15));
+                .perform(PickerActions.setDate(2000, 1, 15));
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.submitButtonId)).perform(click());
 
@@ -86,12 +87,12 @@ public class MainActivityTest {
         onView(withId(R.id.nameEditText)).perform(typeText("test"));
         onView(withId(R.id.emailEditText)).perform(typeText(""));
         onView(withId(R.id.userNameEditText)).perform(typeText("mcontado"));
+        onView(withId(R.id.userNameEditText)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.birthDateButtonId)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                .perform(PickerActions.setDate(2000, 4, 15));
+                .perform(PickerActions.setDate(2000, 1, 15));
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.submitButtonId)).perform(click());
 
@@ -104,12 +105,12 @@ public class MainActivityTest {
         onView(withId(R.id.nameEditText)).perform(typeText("TestName"));
         onView(withId(R.id.emailEditText)).perform(typeText("aaa"));
         onView(withId(R.id.userNameEditText)).perform(typeText("mcontado"));
+        onView(withId(R.id.userNameEditText)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.birthDateButtonId)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                .perform(PickerActions.setDate(2000, 4, 15));
+                .perform(PickerActions.setDate(2000, 1, 15));
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.submitButtonId)).perform(click());
 
@@ -123,12 +124,12 @@ public class MainActivityTest {
         onView(withId(R.id.nameEditText)).perform(typeText("TestName"));
         onView(withId(R.id.emailEditText)).perform(typeText("test@gmail.com"));
         onView(withId(R.id.userNameEditText)).perform(typeText(""));
+        onView(withId(R.id.userNameEditText)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.birthDateButtonId)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                .perform(PickerActions.setDate(2000, 4, 15));
+                .perform(PickerActions.setDate(2000, 1, 15));
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.ageEditText)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.submitButtonId)).perform(click());
 
@@ -153,15 +154,18 @@ public class MainActivityTest {
 
     @Test
     public void testSubmitButton_WithAgeLessThan18_ShouldNotProceed() {
+        Calendar currentDate = Calendar.getInstance();
         onView(withId(R.id.nameEditText)).perform(typeText("TestName"));
         onView(withId(R.id.emailEditText)).perform(typeText("test@gmail.com"));
         onView(withId(R.id.userNameEditText)).perform(typeText("userName"));
+        onView(withId(R.id.userNameEditText)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.birthDateButtonId)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                .perform(PickerActions.setDate(2005, 4, 15));
+                .perform(PickerActions.setDate(currentDate.get(Calendar.YEAR) - 18,
+                                                    currentDate.get(Calendar.MONTH) + 1,
+                                                    currentDate.get(Calendar.DAY_OF_MONTH) + 1));
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.birthDateTextView)).perform(closeSoftKeyboard());
 
         onView(withId(R.id.submitButtonId)).perform(click());
 
