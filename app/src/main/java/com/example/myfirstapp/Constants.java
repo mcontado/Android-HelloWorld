@@ -10,6 +10,8 @@ public class Constants {
     static final String AGE_EMPTY_OR_NULL = "Age is empty or null. \n";
     static final String BIRTH_DATE_EMPTY_OR_NULL = "BirthDate is empty or null. \n";
     static final String EMAIL_IS_INVALID = "Email is invalid. \n";
+    static final String DESCRIPTION_IS_EMPTY_OR_NULL = "Self description is empty or null. \n";
+    static final String OCCUPATION_IS_EMPTY_OR_NULL = "Occupation is empty or null. \n";
 
     static final int AGE_LIMIT = 18;
     static final String THANKS_SIGN = "Thanks for signing up, ";

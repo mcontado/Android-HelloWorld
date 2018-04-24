@@ -52,5 +52,7 @@ public class SecondActivityTest {
         onView(withId(R.id.userNameEditText)).check(matches(withText("")));
         onView(withId(R.id.ageEditText)).check(matches(withText("")));
         onView(withId(R.id.birthDateTextView)).check(matches(withText("")));
+        onView(withId(R.id.selfDescriptionEditText)).check(matches(withText("")));
+        onView(withId(R.id.occupationEditText)).check(matches(withText("")));
     }
 }

@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText userNameEditText;
     private EditText ageEditText;
     private TextView birthDateTextView;
+    private EditText selfDescriptionEditText;
+    private EditText occupationEditText;
 
     private Button btnSubmit;
     private Button btnBirthDate;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         userNameEditText = findViewById(R.id.userNameEditText);
         ageEditText = findViewById(R.id.ageEditText);
         ageEditText.setEnabled(false);
+        selfDescriptionEditText = findViewById(R.id.selfDescriptionEditText);
+        occupationEditText = findViewById(R.id.occupationEditText);
 
         birthDateTextView = findViewById(R.id.birthDateTextView);
 
@@ -57,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
         pattern = Pattern.compile(Constants.regexEmailPattern);
 
         currentDate = Calendar.getInstance();
-
-        //btnBirthDate.setOnClickListener(this);
     }
 
     public void onBirthDateClick(View view) {
@@ -147,8 +149,11 @@ public class MainActivity extends AppCompatActivity {
         final boolean isValidUserName = validateField(userNameEditText, errorMessage, Constants.USERNAME_EMPTY_OR_NULL);
         final boolean isValidBirthDate = validateBirthDate(errorMessage);
         final boolean isValidAge = validateField(ageEditText, errorMessage, Constants.AGE_EMPTY_OR_NULL);
+        final boolean isValidDescription = validateField(selfDescriptionEditText, errorMessage, Constants.DESCRIPTION_IS_EMPTY_OR_NULL);
+        final boolean isValidOccupation = validateField(occupationEditText, errorMessage, Constants.OCCUPATION_IS_EMPTY_OR_NULL);
 
-        return isValidName && isValidEmail && isValidUserName && isValidBirthDate && isValidAge;
+        return isValidName && isValidEmail && isValidUserName && isValidBirthDate && isValidAge
+                && isValidDescription && isValidOccupation;
     }
 
     public boolean validateBirthDate(StringBuilder errorMessage) {
@@ -192,5 +197,7 @@ public class MainActivity extends AppCompatActivity {
         userNameEditText.setText("");
         ageEditText.setText("");
         birthDateTextView.setText("");
+        selfDescriptionEditText.setText("");
+        occupationEditText.setText("");
     }
 }
