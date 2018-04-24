@@ -2,7 +2,13 @@ package com.example.myfirstapp;
 
 public class Constants {
     static final String KEY_NAME = "name";
+    static final String KEY_EMAIL = "email";
+    static final String KEY_USERNAME = "username";
     static final String KEY_BDATE = "birthdate";
+    static final String KEY_AGE = "age";
+    static final String KEY_DESCRIPTION = "description";
+    static final String KEY_OCCUPATION = "occupation";
+
     static final String UNDER_18_NOT_ALLOWED = "Under 18 years old is not allowed. \n";
     static final String NAME_EMPTY_OR_NULL = "Name is empty or null. \n";
     static final String EMAIL_EMPTY_OR_NULL = "Email is empty or null. \n";

@@ -7,6 +7,6 @@
     <dimen name="margin_top_name_date">130dp</dimen>
     <dimen name="margin_bottom_button">-82dp</dimen>
     <dimen name="errorMsgMarginTop">100dp</dimen>
-    <dimen name="back_button_marginTop">50dp</dimen>
+    <dimen name="back_button_marginTop">100dp</dimen>
     <dimen name="age_textView_marginHorizontal">5dp</dimen>
 </resources>

@@ -89,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
         if (isValidForm()) {
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
             intent.putExtra(Constants.KEY_NAME, nameEditText.getText().toString());
+            intent.putExtra(Constants.KEY_EMAIL, emailEditText.getText().toString());
+            intent.putExtra(Constants.KEY_USERNAME, userNameEditText.getText().toString());
+            intent.putExtra(Constants.KEY_BDATE, birthDateTextView.getText().toString());
+            intent.putExtra(Constants.KEY_AGE, ageEditText.getText().toString());
+            intent.putExtra(Constants.KEY_DESCRIPTION, selfDescriptionEditText.getText().toString());
+            intent.putExtra(Constants.KEY_OCCUPATION, occupationEditText.getText().toString());
+
             startActivity(intent);
         }
     }
