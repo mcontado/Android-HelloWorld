@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
-    TextView thanksTextView;
     TextView nameTextView;
     TextView ageTextView;
     TextView emailTextView;
@@ -17,11 +17,11 @@ public class SecondActivity extends AppCompatActivity {
     TextView descriptionTextView;
     TextView occupationTextView;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        thanksTextView = findViewById(R.id.thanksTextView);
         nameTextView = findViewById(R.id.nameTextViewSecondActivity);
         ageTextView = findViewById(R.id.ageTextViewSecondActivity);
         emailTextView = findViewById(R.id.emailTextViewSecondActivity);
@@ -30,16 +30,12 @@ public class SecondActivity extends AppCompatActivity {
         descriptionTextView = findViewById(R.id.descriptionTextViewSecondActivity);
         occupationTextView = findViewById(R.id.occupationTextViewSecondActivity);
 
-        StringBuilder msg = new StringBuilder(Constants.THANKS_SIGN);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-        assert bundle != null;
-        if (bundle.containsKey(Constants.KEY_NAME)) {
-            final String name = bundle.getString(Constants.KEY_NAME);
-            nameTextView.setText(name);
-            msg.append(name);
-        }
+        final String name = bundle.getString(Constants.KEY_NAME);
+        nameTextView.setText(name);
+
         final String age = bundle.getString(Constants.KEY_AGE);
         ageTextView.setText(age);
 
@@ -57,8 +53,6 @@ public class SecondActivity extends AppCompatActivity {
 
         final String occupation = bundle.getString(Constants.KEY_OCCUPATION);
         occupationTextView.setText(occupation);
-
-        thanksTextView.setText(msg);
 
     }
 

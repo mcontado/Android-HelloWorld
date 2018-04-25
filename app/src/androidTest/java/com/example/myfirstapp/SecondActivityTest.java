@@ -27,15 +27,20 @@ public class SecondActivityTest {
         @Override
         protected Intent getActivityIntent() {
             Intent testIntent = new Intent();
-            testIntent.putExtra(Constants.KEY_NAME, "Test Name");
+            testIntent.putExtra(Constants.KEY_NAME, "Jane Doe");
+            testIntent.putExtra(Constants.KEY_AGE, "18");
+            testIntent.putExtra(Constants.KEY_EMAIL, "janedoe@gmail.com");
+            testIntent.putExtra(Constants.KEY_USERNAME, "jdoe");
+            testIntent.putExtra(Constants.KEY_BDATE, "18/04/2000");
+            testIntent.putExtra(Constants.KEY_DESCRIPTION, "Music lover, dog lover");
+            testIntent.putExtra(Constants.KEY_OCCUPATION, "Software Engineer");
+
             return testIntent;
         }
     };
 
     @Test
     public void setsRightMessageBasedOnIntentExtra() {
-        onView(withId(R.id.thanksTextView))
-                .check(matches(withText(Constants.THANKS_SIGN + "Test Name")));
 
         Intents.init();
         onView(withId(R.id.backToMainBtnId)).perform(click());
