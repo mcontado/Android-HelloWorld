@@ -42,10 +42,13 @@ public class SecondActivityTest {
     @Test
     public void setsRightMessageBasedOnIntentExtra() {
 
-        Intents.init();
-        onView(withId(R.id.backToMainBtnId)).perform(click());
-        intended(hasComponent(MainActivity.class.getName()));
-        Intents.release();
+        try {
+            Intents.init();
+            onView(withId(R.id.backToMainBtnId)).perform(click());
+            intended(hasComponent(MainActivity.class.getName()));
+        } finally {
+            Intents.release();
+        }
 
         checkFormIsEmptyForNewProfile();
 
