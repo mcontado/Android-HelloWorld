@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.app.FragmentManager;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Calendar;
@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private int mMonth;
     private int mYear;
 
+    private FragmentManager manager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         pattern = Pattern.compile(Constants.regexEmailPattern);
 
         currentDate = Calendar.getInstance();
+
+        manager = getFragmentManager();
     }
 
     public void onBirthDateClick(View view) {

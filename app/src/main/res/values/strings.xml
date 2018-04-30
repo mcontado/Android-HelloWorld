@@ -23,4 +23,6 @@
     <string name="namePlaceHolder">Name</string>
     <string name="agePlaceHolder">Age</string>
     <string name="commaPlaceHolder">,</string>
+    <string name="fragment_settings">This is where Settings will go</string>
+    <string name="fragment_matches">This is where Matches will go</string>
 </resources>

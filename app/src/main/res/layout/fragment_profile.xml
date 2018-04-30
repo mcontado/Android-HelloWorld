@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/linear_layout_marginHorizontal"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/layout_margin_imageView"
+        android:scaleType="fitXY"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:src="@drawable/mushroom_image" />
+
+    <!-- Name, Age-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/nameTextViewFragmentProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/profileText_textSize"
+            android:text="@string/namePlaceHolder"/>
+        <TextView
+            android:id="@+id/commaTextViewFragmentProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/profileText_textSize"
+            android:text="@string/commaPlaceHolder"/>
+        <TextView
+            android:id="@+id/ageTextViewFragmentProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/profileText_textSize"
+            android:layout_marginHorizontal="@dimen/age_marginHorizontal"
+            android:text="@string/agePlaceHolder"/>
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1"
+        android:shrinkColumns="1">
+
+        <!-- Email -->
+        <TableRow
+            android:id="@+id/tableRowEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/table_row_layout_margin">
+
+            <TextView
+                android:id="@+id/emailLabelTextView"
+                android:text="@string/emailText"
+                android:layout_marginRight="@dimen/textView_layoutMarginRight">
+            </TextView>
+            <TextView
+                android:id="@+id/emailTextViewFragmentProfile"
+                android:textColor="@android:color/black">
+            </TextView>
+        </TableRow>
+
+        <!-- Username -->
+        <TableRow
+            android:id="@+id/tableRowUserName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/table_row_layout_margin">
+
+            <TextView
+                android:id="@+id/userNameLabelTextView"
+                android:text="@string/userNameText"
+                android:layout_marginRight="@dimen/textView_layoutMarginRight">
+            </TextView>
+            <TextView
+                android:id="@+id/userNameTextViewFragmentProfile"
+                android:textColor="@android:color/black">
+            </TextView>
+        </TableRow>
+
+        <!-- Birthdate -->
+        <TableRow
+            android:id="@+id/tableRowBirthDate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/table_row_layout_margin">
+
+            <TextView
+                android:id="@+id/birthDateLabelTextView"
+                android:text="@string/birthDateButtonText"
+                android:layout_marginRight="@dimen/textView_layoutMarginRight">
+            </TextView>
+            <TextView
+                android:id="@+id/birthDateTextViewFragmentProfile"
+                android:textColor="@android:color/black">
+            </TextView>
+        </TableRow>
+
+        <!-- Description -->
+        <TableRow
+            android:id="@+id/tableRowDescription"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/table_row_layout_margin">
+
+            <TextView
+                android:id="@+id/descriptionLabelTextView"
+                android:text="@string/selfDescription"
+                android:layout_marginRight="@dimen/textView_layoutMarginRight">
+            </TextView>
+            <TextView
+                android:id="@+id/descriptionTextViewFragmentProfile"
+                android:textColor="@android:color/black">
+            </TextView>
+        </TableRow>
+
+        <!-- Occupation -->
+        <TableRow
+            android:id="@+id/tableRowOccupation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/table_row_layout_margin">
+
+            <TextView
+                android:id="@+id/occupationLabelTextView"
+                android:layout_marginRight="@dimen/textView_layoutMarginRight"
+                android:text="@string/occupation"/>
+            <TextView
+                android:id="@+id/occupationTextViewFragmentProfile"
+                android:textColor="@android:color/black">
+            </TextView>
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/backToMainBtnId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="backToMain"
+        android:text="@string/back_button" />
+
+</LinearLayout>

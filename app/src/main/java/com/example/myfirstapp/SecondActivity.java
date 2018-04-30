@@ -2,58 +2,78 @@ package com.example.myfirstapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.support.design.widget.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecondActivity extends AppCompatActivity {
-    TextView nameTextView;
-    TextView ageTextView;
-    TextView emailTextView;
-    TextView userNameTextView;
-    TextView birthDateTextView;
-    TextView descriptionTextView;
-    TextView occupationTextView;
 
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
-        nameTextView = findViewById(R.id.nameTextViewSecondActivity);
-        ageTextView = findViewById(R.id.ageTextViewSecondActivity);
-        emailTextView = findViewById(R.id.emailTextViewSecondActivity);
-        userNameTextView = findViewById(R.id.userNameTextViewSecondActivity);
-        birthDateTextView = findViewById(R.id.birthDateTextViewSecondActivity);
-        descriptionTextView = findViewById(R.id.descriptionTextViewSecondActivity);
-        occupationTextView = findViewById(R.id.occupationTextViewSecondActivity);
+        setContentView(R.layout.activity_main_fragments);
 
+        // Adding Toolbar to Main screen
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Setting ViewPager for each Tabs
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+
+        // Set Tabs inside Toolbar
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
+    }
+    // Add Fragments to Tabs
+    private void setupViewPager(ViewPager viewPager) {
+        Adapter adapter = new Adapter(getFragmentManager());
+
+        FragmentProfile fragmentProfile = new FragmentProfile();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+        fragmentProfile.setArguments(bundle);
+        adapter.addFragment(fragmentProfile, "Profile");
 
-        final String name = bundle.getString(Constants.KEY_NAME);
-        nameTextView.setText(name);
+        adapter.addFragment(new FragmentMatches(), "Matches");
+        adapter.addFragment(new FragmentSettings(), "Settings");
+        viewPager.setAdapter(adapter);
+    }
 
-        final String age = bundle.getString(Constants.KEY_AGE);
-        ageTextView.setText(age);
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        final String email = bundle.getString(Constants.KEY_EMAIL);
-        emailTextView.setText(email);
+        public Adapter(FragmentManager manager) {
+            super(manager);
+        }
 
-        final String userName = bundle.getString(Constants.KEY_USERNAME);
-        userNameTextView.setText(userName);
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
 
-        final String birthDate = bundle.getString(Constants.KEY_BDATE);
-        birthDateTextView.setText(birthDate);
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
 
-        final String description = bundle.getString(Constants.KEY_DESCRIPTION);
-        descriptionTextView.setText(description);
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
 
-        final String occupation = bundle.getString(Constants.KEY_OCCUPATION);
-        occupationTextView.setText(occupation);
-
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 
     public void backToMain(View view) {

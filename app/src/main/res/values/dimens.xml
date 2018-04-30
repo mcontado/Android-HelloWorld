@@ -15,4 +15,5 @@
     <dimen name="age_marginHorizontal">5dp</dimen>
     <dimen name="table_row_layout_margin">5dp</dimen>
     <dimen name="textView_layoutMarginRight">10dp</dimen>
+    <dimen name="linear_layout_padding">10dp</dimen>
 </resources>
