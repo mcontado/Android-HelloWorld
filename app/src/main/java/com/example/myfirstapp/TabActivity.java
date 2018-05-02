@@ -14,11 +14,11 @@ import android.support.design.widget.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SecondActivity extends AppCompatActivity {
+public class TabActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_fragments);
+        setContentView(R.layout.activity_tab_fragments);
 
         // Adding Toolbar to Main screen
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -78,7 +78,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void backToMain(View view) {
-        Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+        Intent intent = new Intent(TabActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

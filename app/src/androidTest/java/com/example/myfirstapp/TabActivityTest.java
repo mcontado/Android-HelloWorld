@@ -16,12 +16,11 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.hasCom
 
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.*;
 
-public class SecondActivityTest {
+public class TabActivityTest {
     @Rule
-    public ActivityTestRule<SecondActivity> activityTestRule
-            = new ActivityTestRule<SecondActivity>(SecondActivity.class) {
+    public ActivityTestRule<TabActivity> activityTestRule
+            = new ActivityTestRule<TabActivity>(TabActivity.class) {
 
         @Override
         protected Intent getActivityIntent() {

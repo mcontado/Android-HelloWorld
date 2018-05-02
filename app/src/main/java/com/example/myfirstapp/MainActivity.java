@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSubmit(View view) {
         if (isValidForm()) {
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            Intent intent = new Intent(MainActivity.this, TabActivity.class);
             intent.putExtra(Constants.KEY_NAME, nameEditText.getText().toString());
             intent.putExtra(Constants.KEY_EMAIL, emailEditText.getText().toString());
             intent.putExtra(Constants.KEY_USERNAME, userNameEditText.getText().toString());

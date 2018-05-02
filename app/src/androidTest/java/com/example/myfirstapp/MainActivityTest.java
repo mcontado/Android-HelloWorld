@@ -22,7 +22,6 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExt
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
@@ -42,8 +41,6 @@ public class MainActivityTest {
 
     @Test
     public void testSubmitButton_ShouldValidateForm() throws InterruptedException {
-        onView(withId(R.id.textViewNameDateId))
-                .check(matches(withText(R.string.lastname_firstname_date)));
         onView(withId(R.id.nameEditText)).perform(typeText(NAME));
         onView(withId(R.id.emailEditText)).perform(typeText(EMAIL));
         onView(withId(R.id.userNameEditText)).perform(typeText(USERNAME));
@@ -73,7 +70,7 @@ public class MainActivityTest {
         try {
             Intents.init();
             onView(withId(R.id.submitButtonId)).perform(click());
-            intended(hasComponent(SecondActivity.class.getName()));
+            intended(hasComponent(TabActivity.class.getName()));
             intended(hasExtra(Constants.KEY_NAME, NAME));
             intended(hasExtra(Constants.KEY_AGE, AGE));
             intended(hasExtra(Constants.KEY_EMAIL, EMAIL));
