@@ -14,7 +14,6 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
@@ -40,7 +39,7 @@ public class SecondActivityTest {
     };
 
     @Test
-    public void setsRightMessageBasedOnIntentExtra() {
+    public void backToMainButtonShouldEmptyTheForm() {
 
         try {
             Intents.init();
