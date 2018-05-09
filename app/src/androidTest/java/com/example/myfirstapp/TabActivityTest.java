@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -49,7 +50,14 @@ public class TabActivityTest {
         }
 
         checkFormIsEmptyForNewProfile();
+    }
 
+    @Ignore
+    @Test
+    public void verifyFavoriteImageButtonShouldToast() {
+        FragmentMatches fragmentMatches = new FragmentMatches();
+        activityTestRule.getActivity().getSupportFragmentManager().beginTransaction()
+                .add(R.id.tabs, fragmentMatches).commit();
     }
 
     private void checkFormIsEmptyForNewProfile() {
