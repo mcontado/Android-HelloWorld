@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/linear_layout_marginHorizontal"
     android:orientation="vertical"
+    android:id="@+id/my_fragment_profile"
     android:visibility="visible">
 
     <ImageView

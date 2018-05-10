@@ -4,8 +4,12 @@ import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.view.View;
 import android.widget.DatePicker;
 
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
@@ -14,14 +18,19 @@ import java.util.Calendar;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtra;
+import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.core.AllOf.allOf;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
@@ -78,6 +87,13 @@ public class MainActivityTest {
             intended(hasExtra(Constants.KEY_BDATE, BIRTHDATE));
             intended(hasExtra(Constants.KEY_DESCRIPTION, DESCRIPTION));
             intended(hasExtra(Constants.KEY_OCCUPATION, OCCUPATION));
+
+            onView(allOf(withText("Matches"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
+
+            onView(allOf(
+                    getElementFromMatchAtPosition(
+                            allOf(withId(R.id.favorite_button)), 0), isDisplayed()))
+            .perform(click());
         } finally {
             Intents.release();
         }
@@ -280,5 +296,28 @@ public class MainActivityTest {
         onView(withId(R.id.errorMsgTextView))
                 .check(matches(withText(Constants.OCCUPATION_IS_EMPTY_OR_NULL)));
 
+    }
+
+    private static Matcher<View> getElementFromMatchAtPosition(final Matcher<View> matcher, final int position) {
+        return new BaseMatcher<View>() {
+            int counter = 0;
+
+            @Override
+            public boolean matches(final Object item) {
+                if (matcher.matches(item)) {
+                    if (counter == position) {
+                        counter++;
+                        return true;
+                    }
+                    counter++;
+                }
+                return false;
+            }
+
+            @Override
+            public void describeTo(final Description description) {
+                description.appendText("Element at hierarchy position " + position);
+            }
+        };
     }
 }
