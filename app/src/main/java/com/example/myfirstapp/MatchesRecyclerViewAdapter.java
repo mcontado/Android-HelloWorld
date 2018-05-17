@@ -1,6 +1,7 @@
 package com.example.myfirstapp;
 
 import android.support.annotation.NonNull;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +15,11 @@ import com.example.myfirstapp.models.Matches;
 import com.example.myfirstapp.FragmentMatches.OnListFragmentInteractionListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecyclerViewAdapter.ViewHolder> {
-    private final List<Matches> mValues;
+    private List<Matches> mValues;
     private final OnListFragmentInteractionListener mListener;
 
     public MatchesRecyclerViewAdapter(List<Matches> matches, OnListFragmentInteractionListener listener) {
@@ -90,5 +92,17 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
         public String toString() {
             return super.toString() + " '" + mTitleView.getText() + "'";
         }
+    }
+
+    public void updateMatchListItems(List<Matches> matches) {
+        if (mValues == null) {
+            mValues = new ArrayList<>();
+        }
+        final MatchesDiffCallback diffCallback = new MatchesDiffCallback(mValues, matches);
+        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
+
+        mValues.clear();
+        mValues.addAll(matches);
+        diffResult.dispatchUpdatesTo(this);
     }
 }

@@ -23,8 +23,6 @@ import java.util.List;
 public class TabActivity extends AppCompatActivity implements FragmentMatches.OnListFragmentInteractionListener {
 
     private FirebaseMatchesViewModel viewModel;
-    //private FrameLayout frameLayout;
-    public static final String ARG_DATA_SET = "data-set";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +43,6 @@ public class TabActivity extends AppCompatActivity implements FragmentMatches.On
 
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
-        //Adapter adapter = new Adapter(getFragmentManager());
         Adapter adapter = new Adapter(getSupportFragmentManager());
 
         // Fragment Profile
@@ -57,28 +54,7 @@ public class TabActivity extends AppCompatActivity implements FragmentMatches.On
 
         // Fragment Matches
         viewModel = new FirebaseMatchesViewModel();
-
-        FragmentMatches fragmentMatches = new FragmentMatches();
-        viewModel.getMatches(
-                (ArrayList<Matches> matchesList) -> {
-                    FragmentManager manager = getSupportFragmentManager();
-                    FragmentMatches fragment = (FragmentMatches) manager.findFragmentByTag("fragmentMatches");
-
-                    if (fragment != null) {
-                        // remove fragment to re-add it
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        transaction.remove(fragment);
-                        transaction.commit();
-                    }
-
-                    Bundle bundleForFragmentMatches = new Bundle();
-                    bundleForFragmentMatches.putParcelableArrayList(ARG_DATA_SET, matchesList);
-
-                    fragmentMatches.setArguments(bundleForFragmentMatches);
-
-                }
-        );
-        adapter.addFragment(fragmentMatches, "Matches");
+        adapter.addFragment(new FragmentMatches(), "Matches");
 
         // Fragment Settings
         adapter.addFragment(new FragmentSettings(), "Settings");
