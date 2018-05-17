@@ -90,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onSubmit(View view) {
-        if (isValidForm()) {
+        //TODO: REMOVE COMMENT
+        //if (isValidForm()) {
             Intent intent = new Intent(MainActivity.this, TabActivity.class);
             intent.putExtra(Constants.KEY_NAME, nameEditText.getText().toString());
             intent.putExtra(Constants.KEY_EMAIL, emailEditText.getText().toString());
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_OCCUPATION, occupationEditText.getText().toString());
 
             startActivity(intent);
-        }
+        //}
     }
 
     @TargetApi(Build.VERSION_CODES.O)
