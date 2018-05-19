@@ -92,6 +92,11 @@ public class MainActivityTest {
 
             onView(allOf(
                     getElementFromMatchAtPosition(
+                            allOf(withId(R.id.card_title)), 0), isDisplayed()))
+            .check(matches(withText("Cool Guy Mike")));
+
+            onView(allOf(
+                    getElementFromMatchAtPosition(
                             allOf(withId(R.id.favorite_button)), 0), isDisplayed()))
             .perform(click());
         } finally {
