@@ -18,6 +18,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.graphics.Color.LTGRAY;
+import static android.graphics.Color.RED;
+
 public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecyclerViewAdapter.ViewHolder> {
     private List<Matches> mValues;
     private final OnListFragmentInteractionListener mListener;
@@ -40,17 +43,12 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
         holder.mMatches = mValues.get(position);
         Picasso.get().load(mValues.get(position).imageUrl).into(holder.mImageView);
         holder.mTitleView.setText(mValues.get(position).name);
-
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the fragment
-                    // is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mMatches);
-                }
-            }
-        });
+        Boolean liked = mValues.get(position).liked;
+        if(liked) {
+            holder.favoriteImageButton.setColorFilter(RED);
+        } else {
+            holder.favoriteImageButton.setColorFilter(LTGRAY);
+        }
     }
 
     @Override
@@ -66,6 +64,7 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
         public final ImageView mImageView;
         public final TextView mTitleView;
         public Matches mMatches;
+        public ImageButton favoriteImageButton;
 
         public ViewHolder(View view) {
             super(view);
@@ -73,16 +72,23 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
             mImageView = view.findViewById(R.id.card_image);
             mTitleView = view.findViewById(R.id.card_title);
 
-            ImageButton favoriteImageButton = itemView.findViewById(R.id.favorite_button);
+            favoriteImageButton = itemView.findViewById(R.id.favorite_button);
             favoriteImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (null != mListener) {
+                        mMatches.liked = !mMatches.liked;
+                        if (mMatches.liked) {
+                            favoriteImageButton.setColorFilter(RED);
+                            Toast.makeText(v.getContext(), "You liked " + mTitleView.getText(), Toast.LENGTH_LONG).show();
+                        } else {
+                            favoriteImageButton.setColorFilter(LTGRAY);
+                            Toast.makeText(v.getContext(), "You no longer liked " + mTitleView.getText(), Toast.LENGTH_LONG).show();
+                        }
                         // Notify the active callbacks interface (the activity, if the fragment
                         // is attached to one) that an item has been selected.
                         mListener.onListFragmentInteraction(mMatches);
                     }
-                    Toast.makeText(v.getContext(), "You liked " + mTitleView.getText(), Toast.LENGTH_LONG).show();
 
                 }
             });

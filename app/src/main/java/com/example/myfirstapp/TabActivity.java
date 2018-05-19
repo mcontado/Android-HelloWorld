@@ -97,7 +97,6 @@ public class TabActivity extends AppCompatActivity implements FragmentMatches.On
 
     @Override
     public void onListFragmentInteraction(Matches matches) {
-        matches.liked = true;
         viewModel.updateMatchesItem(matches);
     }
 }
