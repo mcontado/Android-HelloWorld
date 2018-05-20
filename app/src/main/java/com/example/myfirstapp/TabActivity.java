@@ -5,24 +5,21 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.design.widget.TabLayout;
-import android.widget.FrameLayout;
 
-import com.example.myfirstapp.models.Matches;
-import com.example.myfirstapp.viewmodels.FirebaseMatchesViewModel;
+import com.example.myfirstapp.models.MatchesModel;
+import com.example.myfirstapp.viewmodels.MatchesViewModel;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TabActivity extends AppCompatActivity implements FragmentMatches.OnListFragmentInteractionListener {
 
-    private FirebaseMatchesViewModel viewModel;
+    private MatchesViewModel viewModel;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +50,7 @@ public class TabActivity extends AppCompatActivity implements FragmentMatches.On
         adapter.addFragment(fragmentProfile, "Profile");
 
         // Fragment Matches
-        viewModel = new FirebaseMatchesViewModel();
+        viewModel = new MatchesViewModel();
         adapter.addFragment(new FragmentMatches(), "Matches");
 
         // Fragment Settings
@@ -96,7 +93,7 @@ public class TabActivity extends AppCompatActivity implements FragmentMatches.On
     }
 
     @Override
-    public void onListFragmentInteraction(Matches matches) {
+    public void onListFragmentInteraction(MatchesModel matches) {
         viewModel.updateMatchesItem(matches);
     }
 }

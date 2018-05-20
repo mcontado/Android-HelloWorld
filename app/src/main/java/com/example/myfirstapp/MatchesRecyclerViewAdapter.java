@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myfirstapp.models.Matches;
 import com.example.myfirstapp.FragmentMatches.OnListFragmentInteractionListener;
+import com.example.myfirstapp.models.MatchesModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -22,10 +22,10 @@ import static android.graphics.Color.LTGRAY;
 import static android.graphics.Color.RED;
 
 public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecyclerViewAdapter.ViewHolder> {
-    private List<Matches> mValues;
+    private List<MatchesModel> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MatchesRecyclerViewAdapter(List<Matches> matches, OnListFragmentInteractionListener listener) {
+    public MatchesRecyclerViewAdapter(List<MatchesModel> matches, OnListFragmentInteractionListener listener) {
         mValues = matches;
         mListener = listener;
     }
@@ -63,7 +63,7 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
         public final View mView;
         public final ImageView mImageView;
         public final TextView mTitleView;
-        public Matches mMatches;
+        public MatchesModel mMatches;
         public ImageButton favoriteImageButton;
 
         public ViewHolder(View view) {
@@ -100,7 +100,7 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
         }
     }
 
-    public void updateMatchListItems(List<Matches> matches) {
+    public void updateMatchListItems(List<MatchesModel> matches) {
         if (mValues == null) {
             mValues = new ArrayList<>();
         }

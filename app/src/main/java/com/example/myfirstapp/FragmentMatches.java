@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.myfirstapp.models.Matches;
-import com.example.myfirstapp.viewmodels.FirebaseMatchesViewModel;
+import com.example.myfirstapp.models.MatchesModel;
+import com.example.myfirstapp.viewmodels.MatchesViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +19,10 @@ import java.util.List;
 public class FragmentMatches extends Fragment {
 
     public static final String ARG_DATA_SET = "data-set";
-    private List<Matches> mDataSet;
+    private List<MatchesModel> mDataSet;
     private OnListFragmentInteractionListener mListener;
 
-    private FirebaseMatchesViewModel viewModel;
+    private MatchesViewModel matchesViewModel;
 
     private MatchesRecyclerViewAdapter matchesRecyclerViewAdapter;
 
@@ -34,7 +34,7 @@ public class FragmentMatches extends Fragment {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.recycler_view, container, false);
 
-        viewModel = new FirebaseMatchesViewModel();
+        matchesViewModel = new MatchesViewModel();
 
         matchesRecyclerViewAdapter = new MatchesRecyclerViewAdapter(mDataSet, mListener);
 
@@ -42,8 +42,8 @@ public class FragmentMatches extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        viewModel.getMatches(
-                (ArrayList<Matches> matchesList) -> {
+        matchesViewModel.getMatches(
+                (ArrayList<MatchesModel> matchesList) -> {
                     matchesRecyclerViewAdapter.updateMatchListItems(matchesList);
                 }
         );
@@ -89,6 +89,6 @@ public class FragmentMatches extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(Matches matches);
+        void onListFragmentInteraction(MatchesModel matches);
     }
 }
