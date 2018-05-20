@@ -74,7 +74,7 @@ public class MainActivityTest {
         TestUtils.rotateScreen(testRule.getActivity());
 
         onView(withId(R.id.errorMsgTextView)).check(matches(withText("")));
-        Thread.sleep(2000); // Needed due to slow rotation of the screen layout
+        Thread.sleep(5000); // Needed due to slow rotation of the screen layout
 
         try {
             Intents.init();

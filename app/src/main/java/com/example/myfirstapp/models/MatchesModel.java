@@ -3,31 +3,31 @@ package com.example.myfirstapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Matches implements Parcelable  {
+public class MatchesModel implements Parcelable  {
     public String imageUrl;
     public boolean liked;
     public String name;
     public String uid;
 
-    public Matches() {
+    public MatchesModel() {
      //Default constructor required
     }
 
-    public Matches(Parcel in) {
+    public MatchesModel(Parcel in) {
         imageUrl = in.readString();
         liked = in.readByte() != 0;
         name = in.readString();
     }
 
-    public static final Creator<Matches> CREATOR = new Creator<Matches>() {
+    public static final Creator<MatchesModel> CREATOR = new Creator<MatchesModel>() {
         @Override
-        public Matches createFromParcel(Parcel source) {
-            return new Matches(source);
+        public MatchesModel createFromParcel(Parcel source) {
+            return new MatchesModel(source);
         }
 
         @Override
-        public Matches[] newArray(int size) {
-            return new Matches[size];
+        public MatchesModel[] newArray(int size) {
+            return new MatchesModel[size];
         }
     };
 

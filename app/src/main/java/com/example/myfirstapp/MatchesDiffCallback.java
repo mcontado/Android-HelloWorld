@@ -3,15 +3,15 @@ package com.example.myfirstapp;
 import android.support.annotation.Nullable;
 import android.support.v7.util.DiffUtil;
 
-import com.example.myfirstapp.models.Matches;
+import com.example.myfirstapp.models.MatchesModel;
 
 import java.util.List;
 
 public class MatchesDiffCallback extends DiffUtil.Callback {
-    private final List<Matches> mOldMatchesList;
-    private final List<Matches> mNewMatchesList;
+    private final List<MatchesModel> mOldMatchesList;
+    private final List<MatchesModel> mNewMatchesList;
 
-    public MatchesDiffCallback(List<Matches> oldEmployeeList, List<Matches> newEmployeeList) {
+    public MatchesDiffCallback(List<MatchesModel> oldEmployeeList, List<MatchesModel> newEmployeeList) {
         this.mOldMatchesList = oldEmployeeList;
         this.mNewMatchesList = newEmployeeList;
     }
@@ -34,8 +34,8 @@ public class MatchesDiffCallback extends DiffUtil.Callback {
 
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-        final Matches oldMatches = mOldMatchesList.get(oldItemPosition);
-        final Matches newMatches = mNewMatchesList.get(newItemPosition);
+        final MatchesModel oldMatches = mOldMatchesList.get(oldItemPosition);
+        final MatchesModel newMatches = mNewMatchesList.get(newItemPosition);
 
         return oldMatches.name.equals(newMatches.name);
     }
