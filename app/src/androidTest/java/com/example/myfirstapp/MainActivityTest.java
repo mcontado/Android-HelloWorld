@@ -6,6 +6,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
@@ -15,6 +16,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import java.util.Calendar;
+
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
@@ -29,7 +32,10 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.CoreMatchers.anything;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.AllOf.allOf;
 
 @RunWith(AndroidJUnit4.class)
@@ -47,6 +53,10 @@ public class MainActivityTest {
     private static final String BIRTHDATE = "15/4/2000";
     private static final String DESCRIPTION = "Music lover, dog lover...";
     private static final String OCCUPATION = "Software Engineer";
+
+    private static final int HOURS = 11;
+    private static final int MINUTES = 20;
+    private static final String MILES_DISTANCE = "5";
 
     @Test
     public void testSubmitButton_ShouldValidateForm() throws InterruptedException {
@@ -88,6 +98,7 @@ public class MainActivityTest {
             intended(hasExtra(Constants.KEY_DESCRIPTION, DESCRIPTION));
             intended(hasExtra(Constants.KEY_OCCUPATION, OCCUPATION));
 
+            // TEST MATCHES TAB
             onView(allOf(withText("Matches"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
 
             onView(allOf(
@@ -99,6 +110,25 @@ public class MainActivityTest {
                     getElementFromMatchAtPosition(
                             allOf(withId(R.id.favorite_button)), 0), isDisplayed()))
             .perform(click());
+
+            // TEST SETTINGS TAB
+            onView(allOf(withText("Settings"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
+            onView(withId(R.id.reminderTime)).perform(click());
+            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
+                    .perform(PickerActions.setTime(HOURS, MINUTES));
+            onView(withText("OK")).perform(click());
+
+            onView(withId(R.id.distanceSearch)).perform(typeText(MILES_DISTANCE));
+            onView(withId(R.id.distanceSearch)).perform(closeSoftKeyboard());
+            onView(withId(R.id.radioFemale)).perform(click());
+            onView(withId(R.id.radioPrivate)).perform(click());
+
+            onView(withId(R.id.spinnerAgeRange)).perform(click());
+            onData(anything()).atPosition(1).perform(click());
+            onView(withId(R.id.spinnerAgeRange))
+                    .check(matches(withSpinnerText(containsString("26 - 35"))));
+            onView(withId(R.id.saveSettingsId)).perform(click());
+
         } finally {
             Intents.release();
         }

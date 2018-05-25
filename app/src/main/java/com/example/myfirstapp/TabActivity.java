@@ -1,6 +1,8 @@
 package com.example.myfirstapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.design.widget.TabLayout;
-
 import com.example.myfirstapp.models.MatchesModel;
 import com.example.myfirstapp.viewmodels.MatchesViewModel;
 
@@ -54,7 +55,9 @@ public class TabActivity extends AppCompatActivity implements FragmentMatches.On
         adapter.addFragment(new FragmentMatches(), "Matches");
 
         // Fragment Settings
-        adapter.addFragment(new FragmentSettings(), "Settings");
+        FragmentSettings fragmentSettings = new FragmentSettings();
+        fragmentSettings.setArguments(bundle);
+        adapter.addFragment(fragmentSettings, "Settings");
         viewPager.setAdapter(adapter);
     }
 
