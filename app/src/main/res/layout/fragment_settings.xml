@@ -3,12 +3,107 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:orientation="vertical">
 
+    <!--Daily Reminder Time -->
     <TextView
-        android:id="@+id/fragmentSettingsId"
+        android:id="@+id/dailyReminderTimeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dailyReminderTime" />
+
+    <Button
+        android:id="@+id/reminderTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fragment_settings"/>
+        android:text="@string/reminderTime"
+        android:onClick="onReminderTimeClick"/>
+
+
+    <!--Distance Search -->
+    <TextView
+        android:id="@+id/distanceSearchTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/distanceInMiles" />
+    <EditText
+        android:id="@+id/distanceSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/distanceSearch"/>
+
+    <!--Gender  -->
+    <TextView
+        android:id="@+id/genderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/gender" />
+    <!-- Gender Radio Button -->
+    <RadioGroup
+        android:id="@+id/radioGenderGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_male" />
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_female" />
+    </RadioGroup>
+
+
+    <!--Privacy  -->
+    <TextView
+        android:id="@+id/privacyTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/privacy" />
+    <!-- Public or Private  Radio buttons-->
+    <RadioGroup
+        android:id="@+id/radioPrivacyGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/radioPrivate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_private" />
+
+        <RadioButton
+            android:id="@+id/radioPublic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_public" />
+    </RadioGroup>
+
+
+    <!-- Age Range-->
+    <TextView
+        android:id="@+id/ageRangeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/age_range" />
+    <Spinner
+        android:id="@+id/spinnerAgeRange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Submit button-->
+    <Button
+        android:id="@+id/saveSettingsId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom_button"
+        android:text="@string/submit_button"
+        android:onClick="onSaveSettings"/>
 
 </LinearLayout>
