@@ -58,20 +58,7 @@ public class FragmentMatches extends Fragment {
 
         matchesViewModel.getMatches(
                 (ArrayList<MatchesModel> matchesList) -> {
-//                    final ArrayList<MatchesModel> matchesModelsFiltered = new ArrayList<>();
-//                    for (MatchesModel matchesModel: matchesList) {
-//
-//                        final boolean isWithinMaxDistanceSearch =
-//                                evaluateDistanceSearch(Double.parseDouble(matchesModel.longitude),
-//                                        Double.parseDouble(matchesModel.lat));
-//
-//                        if (isWithinMaxDistanceSearch) {
-//                            matchesModelsFiltered.add(matchesModel);
-//                        }
-//                    }
-
                     matchesRecyclerViewAdapter.updateMatchListItems(matchesList);
-                    //matchesRecyclerViewAdapter.updateMatchListItems(matchesModelsFiltered);
                 }
         );
 

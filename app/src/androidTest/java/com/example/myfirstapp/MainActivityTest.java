@@ -100,7 +100,6 @@ public class MainActivityTest {
 
             // TEST MATCHES TAB
             onView(allOf(withText("Matches"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
-            Thread.sleep(6000); // Needed due to slow rotation of the screen layout
 
             onView(allOf(
                     getElementFromMatchAtPosition(

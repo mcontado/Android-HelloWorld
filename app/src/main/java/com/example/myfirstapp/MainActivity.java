@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onSubmit(View view) {
-        // TODO: remove comments before pushing code to master
         if (isValidForm()) {
             Intent intent = new Intent(MainActivity.this, TabActivity.class);
             intent.putExtra(Constants.KEY_NAME, nameEditText.getText().toString());
