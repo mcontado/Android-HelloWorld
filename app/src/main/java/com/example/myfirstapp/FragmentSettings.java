@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -180,16 +181,9 @@ public class FragmentSettings extends Fragment //{
     // For Spinner
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long id) {
-//        final UserSettings userSettings = new UserSettings();
-//        final String distanceInMiles = spinnerAgeRange.getSelectedItem().toString();
-//        userSettings.setEmail(email);
-//        userSettings.setMaxDistanceSearchInMiles(Integer.parseInt(distanceInMiles));
-//        //new UpdateUserSettingsTask(this, userSettings);
-//        new SetUserSettingsTask(this, userSettings).execute();
     }
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
 
     }
 
@@ -277,7 +271,6 @@ public class FragmentSettings extends Fragment //{
                 radioPrivacyGroup.check(R.id.radioPublic);
             }
 
-            // TODO: update age range
             setSpinText(spinnerAgeRange, userSettings.getAgeRange());
 
         }

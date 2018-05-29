@@ -52,12 +52,15 @@ public class TabActivity extends AppCompatActivity implements FragmentMatches.On
 
         // Fragment Matches
         viewModel = new MatchesViewModel();
-        adapter.addFragment(new FragmentMatches(), "Matches");
+        FragmentMatches fragmentMatches = new FragmentMatches();
+        fragmentMatches.setArguments(bundle);
+        adapter.addFragment(fragmentMatches, "Matches");
 
         // Fragment Settings
         FragmentSettings fragmentSettings = new FragmentSettings();
         fragmentSettings.setArguments(bundle);
         adapter.addFragment(fragmentSettings, "Settings");
+
         viewPager.setAdapter(adapter);
     }
 

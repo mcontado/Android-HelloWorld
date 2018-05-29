@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myfirstapp.entity.UserSettings;
 import com.example.myfirstapp.models.MatchesModel;
 import com.example.myfirstapp.viewmodels.MatchesViewModel;
 
@@ -38,7 +40,8 @@ public class FragmentMatches extends Fragment {
     public double longitudeNetwork, latitudeNetwork;
     private static final int SECOND = 60;
     private static final int MILLISECOND = 1000;
-    private static final int MAX_DISTANCE_IN_MILES = 10; // TODO: fetch from settings
+    private static final int MAX_DISTANCE_IN_MILES = 10;
+    String email = null;
 
     @Nullable
     @Override
@@ -121,7 +124,6 @@ public class FragmentMatches extends Fragment {
                 ActivityCompat.checkSelfPermission(getActivity(),
                         android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
         {
-            // TODO: replace 10 by the miles from settings tab.
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER, SECOND * MILLISECOND, MAX_DISTANCE_IN_MILES,
                     locationListenerNetwork);
@@ -158,7 +160,7 @@ public class FragmentMatches extends Fragment {
             latitudeNetwork = location.getLatitude();
 
             getActivity().runOnUiThread(()-> {
-                filterMatchesBasedOnUserLocation();
+                filterMatches();
             });
         }
 
@@ -172,7 +174,31 @@ public class FragmentMatches extends Fragment {
         public void onProviderDisabled(String s) {}
     };
 
-    private void filterMatchesBasedOnUserLocation() {
+    private void filterMatches() {
+        Bundle bundle = getArguments();
+
+        if (bundle != null) {
+            email = bundle.getString(Constants.KEY_EMAIL);
+        }
+
+        String[] emailList = { email };
+
+        final AppDatabase db = Room.databaseBuilder(getActivity(),
+                AppDatabase.class, "app-database").allowMainThreadQueries().build();
+
+        List<UserSettings> userSettings = db.userSettingsDao().loadAllByIds(emailList);
+
+        int maxDistance;
+        if (userSettings.size() != 0) {
+            maxDistance = userSettings.get(0).getMaxDistanceSearchInMiles();
+        } else {
+            maxDistance = MAX_DISTANCE_IN_MILES;
+        }
+
+        filterMatchesBasedOnUserLocation(maxDistance);
+    }
+
+    private void filterMatchesBasedOnUserLocation(int userSettingsMaxDistance) {
         matchesViewModel.getMatches(
                 (ArrayList<MatchesModel> matchesList) -> {
                     final ArrayList<MatchesModel> filteredListOfMatches = new ArrayList<>();
@@ -180,7 +206,8 @@ public class FragmentMatches extends Fragment {
                     for (MatchesModel matchesModel: matchesList) {
                         final boolean isWithinMaxDistanceSearch =
                                 evaluateDistanceSearch(Double.parseDouble(matchesModel.longitude),
-                                        Double.parseDouble(matchesModel.lat));
+                                        Double.parseDouble(matchesModel.lat),
+                                        userSettingsMaxDistance);
 
                         if (isWithinMaxDistanceSearch) {
                             filteredListOfMatches.add(matchesModel);
@@ -192,12 +219,14 @@ public class FragmentMatches extends Fragment {
         );
     }
 
-    private boolean evaluateDistanceSearch(double matchesLongitude, double matchesLatitude) {
+    private boolean evaluateDistanceSearch(double matchesLongitude, double matchesLatitude,
+                                           int userSettingsMaxDistance) {
 
         final double diffLongitude = longitudeNetwork - matchesLongitude;
         final double diffLatitude = latitudeNetwork - matchesLatitude;
 
-        if (diffLongitude <= MAX_DISTANCE_IN_MILES && diffLatitude <= MAX_DISTANCE_IN_MILES) {
+        if (Math.abs(diffLongitude) <= userSettingsMaxDistance &&
+                Math.abs(diffLatitude) <= userSettingsMaxDistance) {
             return true;
         }
         return false;
