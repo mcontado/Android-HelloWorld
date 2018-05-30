@@ -18,6 +18,9 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import java.util.Calendar;
 
 import static android.support.test.espresso.Espresso.onData;
@@ -38,6 +41,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -61,17 +65,12 @@ public class MainActivityTest {
     private static final int MINUTES = 20;
     private static final String MILES_DISTANCE = "5";
 
-    private static final double LATITUDE = 47.6141;
-    private static final double LONGITUDE = -122.351;
-
-    private Location location;
+    private Location locationMock;
 
     @Before
-    public void init() {
-        location = mock(Location.class);
-
-        when(location.getLatitude()).thenReturn(LATITUDE);
-        when(location.getLongitude()).thenReturn(LONGITUDE);
+    public void setUp() {
+        locationMock = mock(Location.class);
+        when(locationMock.distanceTo(any(Location.class))).thenReturn(16093.4f);
     }
 
     @Test
