@@ -1,6 +1,7 @@
 package com.example.myfirstapp;
 
 import android.location.Location;
+import android.location.LocationManager;
 import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
@@ -66,11 +67,16 @@ public class MainActivityTest {
     private static final String MILES_DISTANCE = "5";
 
     private Location locationMock;
+    private LocationManager locationManagerMock;
 
     @Before
     public void setUp() {
         locationMock = mock(Location.class);
+        locationManagerMock = mock(LocationManager.class);
+
+        when(locationManagerMock.isProviderEnabled(LocationManager.GPS_PROVIDER)).thenReturn(true);
         when(locationMock.distanceTo(any(Location.class))).thenReturn(16093.4f);
+
     }
 
     @Test
