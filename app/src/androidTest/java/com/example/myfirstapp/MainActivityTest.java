@@ -101,6 +101,7 @@ public class MainActivityTest {
             // TEST MATCHES TAB
             onView(allOf(withText("Matches"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
 
+            Thread.sleep(6000);
             onView(allOf(
                     getElementFromMatchAtPosition(
                             allOf(withId(R.id.card_title)), 0), isDisplayed()))
