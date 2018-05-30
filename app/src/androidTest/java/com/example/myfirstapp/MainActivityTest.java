@@ -124,11 +124,11 @@ public class MainActivityTest {
             onView(withId(R.id.radioFemale)).perform(click());
             onView(withId(R.id.radioPrivate)).perform(click());
 
-            onView(withId(R.id.spinnerAgeRange)).perform(click());
-            onData(anything()).atPosition(1).perform(click());
-            onView(withId(R.id.spinnerAgeRange))
-                    .check(matches(withSpinnerText(containsString("26 - 35"))));
-            onView(withId(R.id.saveSettingsId)).perform(click());
+//            onView(withId(R.id.spinnerAgeRange)).perform(click());
+//            onData(anything()).atPosition(0).perform(click());
+//            onView(withId(R.id.spinnerAgeRange))
+//                    .check(matches(withSpinnerText(containsString("26 - 35"))));
+//            onView(withId(R.id.saveSettingsId)).perform(click());
 
         } finally {
             Intents.release();
