@@ -1,9 +1,11 @@
 package com.example.myfirstapp;
 
+import android.location.Location;
 import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.test.mock.MockContentProvider;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -12,6 +14,7 @@ import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,6 +38,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
@@ -55,6 +60,19 @@ public class MainActivityTest {
     private static final int HOURS = 11;
     private static final int MINUTES = 20;
     private static final String MILES_DISTANCE = "5";
+
+    private static final double LATITUDE = 47.6141;
+    private static final double LONGITUDE = -122.351;
+
+    private Location location;
+
+    @Before
+    public void init() {
+        location = mock(Location.class);
+
+        when(location.getLatitude()).thenReturn(LATITUDE);
+        when(location.getLongitude()).thenReturn(LONGITUDE);
+    }
 
     @Test
     public void testSubmitButton_ShouldValidateForm() throws InterruptedException {
@@ -111,16 +129,22 @@ public class MainActivityTest {
             .perform(click());
 
             // TEST SETTINGS TAB
-//            onView(allOf(withText("Settings"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
-//            onView(withId(R.id.reminderTime)).perform(click());
-//            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
-//                    .perform(PickerActions.setTime(HOURS, MINUTES));
-//            onView(withText("OK")).perform(click());
-//
-//            onView(withId(R.id.distanceSearch)).perform(typeText(MILES_DISTANCE));
-//            onView(withId(R.id.distanceSearch)).perform(closeSoftKeyboard());
-//            onView(withId(R.id.radioFemale)).perform(click());
-//            onView(withId(R.id.radioPrivate)).perform(click());
+            onView(allOf(withText("Settings"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
+            onView(withId(R.id.reminderTime)).perform(click());
+            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
+                    .perform(PickerActions.setTime(HOURS, MINUTES));
+            onView(withText("OK")).perform(click());
+
+            onView(withId(R.id.distanceSearch)).perform(typeText(MILES_DISTANCE));
+            onView(withId(R.id.distanceSearch)).perform(closeSoftKeyboard());
+            onView(withId(R.id.radioFemale)).perform(click());
+            onView(withId(R.id.radioPrivate)).perform(click());
+
+            onView(withId(R.id.spinnerAgeRange)).perform(click());
+            onData(anything()).atPosition(1).perform(click());
+            onView(withId(R.id.spinnerAgeRange))
+                    .check(matches(withSpinnerText(containsString("26 - 35"))));
+            onView(withId(R.id.saveSettingsId)).perform(click());
 
 
         } finally {
