@@ -111,16 +111,16 @@ public class MainActivityTest {
             .perform(click());
 
             // TEST SETTINGS TAB
-            onView(allOf(withText("Settings"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
-            onView(withId(R.id.reminderTime)).perform(click());
-            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
-                    .perform(PickerActions.setTime(HOURS, MINUTES));
-            onView(withText("OK")).perform(click());
-
-            onView(withId(R.id.distanceSearch)).perform(typeText(MILES_DISTANCE));
-            onView(withId(R.id.distanceSearch)).perform(closeSoftKeyboard());
-            onView(withId(R.id.radioFemale)).perform(click());
-            onView(withId(R.id.radioPrivate)).perform(click());
+//            onView(allOf(withText("Settings"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
+//            onView(withId(R.id.reminderTime)).perform(click());
+//            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
+//                    .perform(PickerActions.setTime(HOURS, MINUTES));
+//            onView(withText("OK")).perform(click());
+//
+//            onView(withId(R.id.distanceSearch)).perform(typeText(MILES_DISTANCE));
+//            onView(withId(R.id.distanceSearch)).perform(closeSoftKeyboard());
+//            onView(withId(R.id.radioFemale)).perform(click());
+//            onView(withId(R.id.radioPrivate)).perform(click());
 
 
         } finally {

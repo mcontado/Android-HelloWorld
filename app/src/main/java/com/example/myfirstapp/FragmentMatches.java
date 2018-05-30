@@ -37,11 +37,13 @@ public class FragmentMatches extends Fragment {
     private MatchesRecyclerViewAdapter matchesRecyclerViewAdapter;
 
     LocationManager locationManager;
-    public double longitudeNetwork, latitudeNetwork;
+
     private static final int SECOND = 60;
     private static final int MILLISECOND = 1000;
     private static final int MAX_DISTANCE_IN_MILES = 10;
     String email = null;
+    private Location myLocation;
+    private static final double MILE_TO_METER = 1609.34;
 
     @Nullable
     @Override
@@ -125,7 +127,7 @@ public class FragmentMatches extends Fragment {
                         android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
         {
             locationManager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER, SECOND * MILLISECOND, MAX_DISTANCE_IN_MILES,
+                    LocationManager.GPS_PROVIDER, SECOND * MILLISECOND, 1000,
                     locationListenerNetwork);
         }
     }
@@ -156,8 +158,9 @@ public class FragmentMatches extends Fragment {
     private final LocationListener locationListenerNetwork = new LocationListener() {
         public void onLocationChanged(Location location) {
             // This is the current user's location
-            longitudeNetwork = location.getLongitude();
-            latitudeNetwork = location.getLatitude();
+            myLocation = location;
+            //longitudeNetwork = location.getLongitude();
+            //latitudeNetwork = location.getLatitude();
 
             getActivity().runOnUiThread(()-> {
                 filterMatches();
@@ -220,13 +223,17 @@ public class FragmentMatches extends Fragment {
     }
 
     private boolean evaluateDistanceSearch(double matchesLongitude, double matchesLatitude,
-                                           int userSettingsMaxDistance) {
+                                           int userSettingsMaxDistanceInMiles) {
 
-        final double diffLongitude = longitudeNetwork - matchesLongitude;
-        final double diffLatitude = latitudeNetwork - matchesLatitude;
+        Location matchesLocation = new Location("");
+        matchesLocation.setLatitude(matchesLatitude);
+        matchesLocation.setLongitude(matchesLongitude);
 
-        if (Math.abs(diffLongitude) <= userSettingsMaxDistance &&
-                Math.abs(diffLatitude) <= userSettingsMaxDistance) {
+        // distanceTo - returns distance in meters.
+        final double myDistanceToMatchesLocationInMeters = myLocation.distanceTo(matchesLocation);
+        final double userSettingsDistanceInMeters = userSettingsMaxDistanceInMiles * MILE_TO_METER;
+
+        if (myDistanceToMatchesLocationInMeters < userSettingsDistanceInMeters) {
             return true;
         }
         return false;
