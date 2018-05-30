@@ -21,8 +21,6 @@ import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
-import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
@@ -101,7 +99,7 @@ public class MainActivityTest {
             // TEST MATCHES TAB
             onView(allOf(withText("Matches"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
 
-            Thread.sleep(6000);
+            Thread.sleep(5000);
             onView(allOf(
                     getElementFromMatchAtPosition(
                             allOf(withId(R.id.card_title)), 0), isDisplayed()))
@@ -124,11 +122,6 @@ public class MainActivityTest {
             onView(withId(R.id.radioFemale)).perform(click());
             onView(withId(R.id.radioPrivate)).perform(click());
 
-//            onView(withId(R.id.spinnerAgeRange)).perform(click());
-//            onData(anything()).atPosition(0).perform(click());
-//            onView(withId(R.id.spinnerAgeRange))
-//                    .check(matches(withSpinnerText(containsString("26 - 35"))));
-//            onView(withId(R.id.saveSettingsId)).perform(click());
 
         } finally {
             Intents.release();
