@@ -43,6 +43,9 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
         holder.mMatches = mValues.get(position);
         Picasso.get().load(mValues.get(position).imageUrl).into(holder.mImageView);
         holder.mTitleView.setText(mValues.get(position).name);
+        holder.latitude.setText(mValues.get(position).lat);
+        holder.longitude.setText(mValues.get(position).longitude);
+
         Boolean liked = mValues.get(position).liked;
         if(liked) {
             holder.favoriteImageButton.setColorFilter(RED);
@@ -65,12 +68,16 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
         public final TextView mTitleView;
         public MatchesModel mMatches;
         public ImageButton favoriteImageButton;
+        public final TextView latitude;
+        public final TextView longitude;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mImageView = view.findViewById(R.id.card_image);
             mTitleView = view.findViewById(R.id.card_title);
+            latitude = view.findViewById(R.id.latitudeValueNetwork);
+            longitude = view.findViewById(R.id.longitudeValueNetwork);
 
             favoriteImageButton = itemView.findViewById(R.id.favorite_button);
             favoriteImageButton.setOnClickListener(new View.OnClickListener() {

@@ -1,8 +1,11 @@
 package com.example.myfirstapp;
 
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.rule.GrantPermissionRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 import android.widget.DatePicker;
@@ -12,17 +15,17 @@ import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import java.util.Calendar;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
-import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
@@ -37,12 +40,18 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
     @Rule
     public ActivityTestRule<MainActivity> testRule = new ActivityTestRule<>(MainActivity.class);
+
+    @Rule
+    public GrantPermissionRule permissionRule = GrantPermissionRule.grant(android.Manifest.permission.ACCESS_FINE_LOCATION);
+
     private static final String NAME = "Jane Doe";
     private static final String EMAIL = "janedoe@gmail.com";
     private static final String USERNAME = "jdoe";
@@ -57,6 +66,20 @@ public class MainActivityTest {
     private static final int HOURS = 11;
     private static final int MINUTES = 20;
     private static final String MILES_DISTANCE = "5";
+
+    private Location locationMock;
+    private LocationManager locationManagerMock;
+
+    @Before
+    public void setUp() {
+        locationMock = mock(Location.class);
+        locationManagerMock = mock(LocationManager.class);
+
+        when(locationManagerMock.isProviderEnabled(LocationManager.GPS_PROVIDER)).thenReturn(true);
+        when(locationMock.getLatitude()).thenReturn(47.6141);
+        when(locationMock.getLongitude()).thenReturn(-122.351);
+        LocationSingleton.setLocation(locationMock);
+    }
 
     @Test
     public void testSubmitButton_ShouldValidateForm() throws InterruptedException {
@@ -101,6 +124,8 @@ public class MainActivityTest {
             // TEST MATCHES TAB
             onView(allOf(withText("Matches"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
 
+            Thread.sleep(5000);
+
             onView(allOf(
                     getElementFromMatchAtPosition(
                             allOf(withId(R.id.card_title)), 0), isDisplayed()))
@@ -128,6 +153,7 @@ public class MainActivityTest {
             onView(withId(R.id.spinnerAgeRange))
                     .check(matches(withSpinnerText(containsString("26 - 35"))));
             onView(withId(R.id.saveSettingsId)).perform(click());
+
 
         } finally {
             Intents.release();
