@@ -7,7 +7,6 @@ import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.rule.GrantPermissionRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.mock.MockContentProvider;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -20,8 +19,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import java.util.Calendar;
 
@@ -43,7 +40,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.AllOf.allOf;
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -82,6 +78,7 @@ public class MainActivityTest {
         when(locationManagerMock.isProviderEnabled(LocationManager.GPS_PROVIDER)).thenReturn(true);
         when(locationMock.getLatitude()).thenReturn(47.6141);
         when(locationMock.getLongitude()).thenReturn(-122.351);
+        LocationSingleton.setLocation(locationMock);
     }
 
     @Test

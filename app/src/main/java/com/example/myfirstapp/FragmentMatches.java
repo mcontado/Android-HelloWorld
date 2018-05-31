@@ -158,7 +158,12 @@ public class FragmentMatches extends Fragment {
     private final LocationListener locationListenerNetwork = new LocationListener() {
         public void onLocationChanged(Location location) {
             // This is the current user's location
-            myLocation = location;
+            if(LocationSingleton.getLocation() != null) {
+                myLocation = LocationSingleton.getLocation();
+            } else {
+                myLocation = location;
+            }
+
             //longitudeNetwork = location.getLongitude();
             //latitudeNetwork = location.getLatitude();
 
