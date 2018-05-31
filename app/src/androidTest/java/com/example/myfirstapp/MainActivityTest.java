@@ -5,6 +5,7 @@ import android.location.LocationManager;
 import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.rule.GrantPermissionRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.mock.MockContentProvider;
 import android.view.View;
@@ -51,6 +52,10 @@ public class MainActivityTest {
 
     @Rule
     public ActivityTestRule<MainActivity> testRule = new ActivityTestRule<>(MainActivity.class);
+
+    @Rule
+    public GrantPermissionRule permissionRule = GrantPermissionRule.grant(android.Manifest.permission.ACCESS_FINE_LOCATION);
+
     private static final String NAME = "Jane Doe";
     private static final String EMAIL = "janedoe@gmail.com";
     private static final String USERNAME = "jdoe";
@@ -76,7 +81,6 @@ public class MainActivityTest {
 
         when(locationManagerMock.isProviderEnabled(LocationManager.GPS_PROVIDER)).thenReturn(true);
         when(locationMock.distanceTo(any(Location.class))).thenReturn(16093.4f);
-
     }
 
     @Test
