@@ -127,16 +127,17 @@ public class MainActivityTest {
             // TEST MATCHES TAB
             onView(allOf(withText("Matches"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
 
-//            Thread.sleep(5000);
-//            onView(allOf(
-//                    getElementFromMatchAtPosition(
-//                            allOf(withId(R.id.card_title)), 0), isDisplayed()))
-//            .check(matches(withText("Cool Guy Mike")));
-//
-//            onView(allOf(
-//                    getElementFromMatchAtPosition(
-//                            allOf(withId(R.id.favorite_button)), 0), isDisplayed()))
-//            .perform(click());
+            Thread.sleep(5000);
+
+            onView(allOf(
+                    getElementFromMatchAtPosition(
+                            allOf(withId(R.id.card_title)), 0), isDisplayed()))
+            .check(matches(withText("Cool Guy Mike")));
+
+            onView(allOf(
+                    getElementFromMatchAtPosition(
+                            allOf(withId(R.id.favorite_button)), 0), isDisplayed()))
+            .perform(click());
 
             // TEST SETTINGS TAB
             onView(allOf(withText("Settings"), isDescendantOfA(withId(R.id.tabs)))).perform(click());
