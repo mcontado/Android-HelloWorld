@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="@dimen/linear_layout_marginHorizontal"
     android:orientation="vertical"
     android:id="@+id/my_fragment_profile"
@@ -16,7 +17,7 @@
         android:scaleType="fitXY"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        android:src="@drawable/mushroom_image" />
+        android:src="@drawable/mugi_icon" />
 
     <!-- Name, Age-->
     <LinearLayout
@@ -50,6 +51,8 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="0,1"
@@ -151,6 +154,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="backToMain"
-        android:text="@string/back_button" />
+        android:text="@string/back_button"
+        android:background="#74B4BC"
+        app:fontFamily="sans-serif"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"/>
 
 </LinearLayout>

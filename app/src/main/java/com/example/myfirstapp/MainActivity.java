@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onSubmit(View view) {
+        // TODO: remove before pushing to master
         if (isValidForm()) {
             Intent intent = new Intent(MainActivity.this, TabActivity.class);
             intent.putExtra(Constants.KEY_NAME, nameEditText.getText().toString());
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_OCCUPATION, occupationEditText.getText().toString());
 
             startActivity(intent);
-        }
+       }
     }
 
     @TargetApi(Build.VERSION_CODES.O)

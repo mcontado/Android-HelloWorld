@@ -5,15 +5,15 @@
     <dimen name="button_margin_top">70dp</dimen>
     <dimen name="margin_top_hello">103dp</dimen>
     <dimen name="margin_top_name_date">130dp</dimen>
-    <dimen name="margin_bottom_button">-82dp</dimen>
-    <dimen name="errorMsgMarginTop">100dp</dimen>
+    <dimen name="margin_bottom_button">10dp</dimen>
+    <dimen name="errorMsgMarginTop">20dp</dimen>
     <dimen name="back_button_marginTop">100dp</dimen>
     <dimen name="age_textView_marginHorizontal">5dp</dimen>
     <dimen name="linear_layout_marginHorizontal">20dp</dimen>
     <dimen name="layout_margin_imageView">30dp</dimen>
     <dimen name="profileText_textSize">20sp</dimen>
     <dimen name="age_marginHorizontal">5dp</dimen>
-    <dimen name="table_row_layout_margin">5dp</dimen>
+    <dimen name="table_row_layout_margin">10dp</dimen>
     <dimen name="textView_layoutMarginRight">10dp</dimen>
     <dimen name="linear_layout_padding">10dp</dimen>
     <dimen name="md_keylines">16dp</dimen>
@@ -22,4 +22,8 @@
     <dimen name="card_title_height">40dp</dimen>
     <dimen name="cards_button_width">48dp</dimen>
     <dimen name="cards_button_height">48dp</dimen>
+    <dimen name="layout_marginTop">10dp</dimen>
+    <dimen name="layout_margin_main">2dp</dimen>
+    <dimen name="profile_marginHorizontal">10dp</dimen>
+    <dimen name="settings_marginTop">10dp</dimen>
 </resources>

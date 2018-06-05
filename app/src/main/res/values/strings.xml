@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MyFirstApp</string>
     <string name="hello_world">Hello World!</string>
-    <string name="submit_button">Submit</string>
+    <string name="submit_button">Sign up</string>
     <string name="enter_name">Enter Name</string>
     <string name="enter_email">Enter email address</string>
     <string name="enter_username">Enter username</string>
@@ -16,7 +16,7 @@
     <string name="ageText">Age</string>
     <string name="birthDateButtonText">Birth Date</string>
     <string name="selfDescription">Description</string>
-    <string name="tell_about_yourself">Tell about yourself</string>
+    <string name="tell_about_yourself">Tell something about yourself</string>
     <string name="occupation">Occupation</string>
     <string name="enter_occupation">Your occupation</string>
     <string name="namePlaceHolder">Name</string>
@@ -40,4 +40,5 @@
     <string name="location_message">Your Locations Settings is set to \'Off\'. Please Enable Location to use this app</string>
     <string name="location_settings">Location Settings</string>
     <string name="location_cancel">Cancel</string>
+    <string name="save_settings">Save Settings</string>
 </resources>

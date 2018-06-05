@@ -3,17 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginHorizontal="@dimen/linear_layout_marginHorizontal">
 
     <!--Daily Reminder Time -->
     <TextView
         android:id="@+id/dailyReminderTimeTextView"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
+        android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/dailyReminderTime" />
 
     <Button
         android:id="@+id/reminderTime"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/reminderTime"
@@ -23,11 +27,14 @@
     <!--Distance Search -->
     <TextView
         android:id="@+id/distanceSearchTextView"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
+        android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/distanceInMiles" />
     <EditText
         android:id="@+id/distanceSearch"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -37,12 +44,15 @@
     <!--Gender  -->
     <TextView
         android:id="@+id/genderTextView"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
+        android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/gender" />
     <!-- Gender Radio Button -->
     <RadioGroup
         android:id="@+id/radioGenderGroup"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
@@ -63,12 +73,15 @@
     <!--Privacy  -->
     <TextView
         android:id="@+id/privacyTextView"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
+        android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/privacy" />
     <!-- Public or Private  Radio buttons-->
     <RadioGroup
         android:id="@+id/radioPrivacyGroup"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
@@ -89,6 +102,8 @@
     <!-- Age Range-->
     <TextView
         android:id="@+id/ageRangeTextView"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
+        android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/age_range" />
@@ -100,10 +115,14 @@
     <!-- Submit button-->
     <Button
         android:id="@+id/saveSettingsId"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_bottom_button"
-        android:text="@string/submit_button"
+        android:text="@string/save_settings"
+        android:background="#74B4BC"
+        android:fontFamily="sans-serif"
         android:onClick="onSaveSettings"/>
 
 </LinearLayout>
