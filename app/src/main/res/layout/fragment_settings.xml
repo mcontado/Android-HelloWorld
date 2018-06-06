@@ -13,6 +13,7 @@
         android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/gothambook"
         android:text="@string/dailyReminderTime" />
 
     <Button
@@ -21,6 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/reminderTime"
+        android:textAllCaps="false"
+        android:fontFamily="@font/gothambook"
         android:onClick="onReminderTimeClick"/>
 
 
@@ -31,6 +34,7 @@
         android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/gothambook"
         android:text="@string/distanceInMiles" />
     <EditText
         android:id="@+id/distanceSearch"
@@ -39,6 +43,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:fontFamily="@font/gothambook"
         android:hint="@string/distanceSearch"/>
 
     <!--Gender  -->
@@ -48,13 +53,14 @@
         android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/gothambook"
         android:text="@string/gender" />
     <!-- Gender Radio Button -->
     <RadioGroup
         android:id="@+id/radioGenderGroup"
         android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <RadioButton
             android:id="@+id/radioMale"
@@ -77,6 +83,7 @@
         android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/gothambook"
         android:text="@string/privacy" />
     <!-- Public or Private  Radio buttons-->
     <RadioGroup
@@ -106,6 +113,7 @@
         android:layout_marginTop="@dimen/settings_marginTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/gothambook"
         android:text="@string/age_range" />
     <Spinner
         android:id="@+id/spinnerAgeRange"
@@ -121,8 +129,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_bottom_button"
         android:text="@string/save_settings"
-        android:background="#74B4BC"
-        android:fontFamily="sans-serif"
-        android:onClick="onSaveSettings"/>
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/gothambook"
+        android:onClick="onSaveSettings"
+        android:textAllCaps="false"
+        android:textSize="@dimen/button_textSize"/>
 
 </LinearLayout>

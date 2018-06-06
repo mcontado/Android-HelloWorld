@@ -13,29 +13,39 @@
     <EditText
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/editText_layoutHeight"
         android:hint="@string/enter_name"
-        android:layout_margin="@dimen/layout_margin_main"/>
+        android:background="@drawable/textinputborder"
+        android:layout_margin="@dimen/layout_margin_main"
+        app:fontFamily="@font/gothambook"
+        android:paddingLeft="@dimen/editText_paddingLeft"/>
 
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/editText_layoutHeight"
         android:hint="@string/enter_email"
-        android:layout_margin="@dimen/layout_margin_main"/>
+        android:background="@drawable/textinputborder"
+        android:layout_margin="@dimen/layout_margin_main"
+        app:fontFamily="@font/gothambook"
+        android:paddingLeft="@dimen/editText_paddingLeft"/>
 
     <EditText
         android:id="@+id/userNameEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/editText_layoutHeight"
         android:hint="@string/enter_username"
-        android:layout_margin="@dimen/layout_margin_main"/>
+        android:background="@drawable/textinputborder"
+        android:layout_margin="@dimen/layout_margin_main"
+        app:fontFamily="@font/gothambook"
+        android:paddingLeft="@dimen/editText_paddingLeft"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/layout_margin_main"
         android:gravity="left"
+        app:fontFamily="@font/gothambook"
         android:orientation="horizontal">
 
         <Button
@@ -43,52 +53,65 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onBirthDateClick"
-            android:text="@string/birthDateButtonText" />
+            android:text="@string/birthDateButtonText"
+            android:textAllCaps="false"
+            app:fontFamily="@font/gothambook" />
 
         <TextView
             android:id="@+id/birthDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:fontFamily="@font/gothambook"
             android:hint="@string/enter_birthdate" />
 
         <EditText
             android:id="@+id/ageEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:fontFamily="@font/gothambook"
             android:hint="@string/enter_age" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/selfDescriptionEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/editText_layoutHeight"
         android:hint="@string/tell_about_yourself"
-        android:layout_margin="@dimen/layout_margin_main"/>
+        android:background="@drawable/textinputborder"
+        android:layout_margin="@dimen/layout_margin_main"
+        app:fontFamily="@font/gothambook"
+        android:paddingLeft="@dimen/editText_paddingLeft"/>
 
     <EditText
         android:id="@+id/occupationEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/editText_layoutHeight"
         android:hint="@string/enter_occupation"
-        android:layout_margin="@dimen/layout_margin_main"/>
+        android:background="@drawable/textinputborder"
+        android:layout_margin="@dimen/layout_margin_main"
+        app:fontFamily="@font/gothambook"
+        android:paddingLeft="@dimen/editText_paddingLeft"/>
 
     <Button
         android:id="@+id/submitButtonId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_bottom_button"
-        android:text="@string/submit_button"
-        android:onClick="onSubmit"
-        android:background="#74B4BC"
         android:layout_margin="@dimen/layout_margin_main"
-        app:fontFamily="sans-serif"/>
+        android:layout_marginBottom="@dimen/margin_bottom_button"
+        android:background="@drawable/mybutton"
+        android:onClick="onSubmit"
+        android:text="@string/submit_button"
+        android:textAllCaps="false"
+        android:textSize="@dimen/button_textSize"
+        app:fontFamily="@font/gothambook" />
 
     <TextView
         android:id="@+id/errorMsgTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin_main"
         android:layout_marginTop="@dimen/errorMsgMarginTop"
-        android:layout_margin="@dimen/layout_margin_main" />
+        app:fontFamily="@font/gothambook" />
 
     <!--<FrameLayout-->
         <!--android:id="@+id/container"-->

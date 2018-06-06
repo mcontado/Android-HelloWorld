@@ -18,12 +18,16 @@
     <dimen name="linear_layout_padding">10dp</dimen>
     <dimen name="md_keylines">16dp</dimen>
     <dimen name="card_height">304dp</dimen>
-    <dimen name="card_image_height">200dp</dimen>
+    <dimen name="card_image_height">250dp</dimen>
     <dimen name="card_title_height">40dp</dimen>
     <dimen name="cards_button_width">48dp</dimen>
     <dimen name="cards_button_height">48dp</dimen>
     <dimen name="layout_marginTop">10dp</dimen>
-    <dimen name="layout_margin_main">2dp</dimen>
+    <dimen name="layout_margin_main">5dp</dimen>
     <dimen name="profile_marginHorizontal">10dp</dimen>
     <dimen name="settings_marginTop">10dp</dimen>
+    <dimen name="editText_paddingLeft">5dp</dimen>
+    <dimen name="editText_layoutHeight">40dp</dimen>
+    <dimen name="button_textSize">16sp</dimen>
+    <dimen name="card_title_width">250dp</dimen>
 </resources>

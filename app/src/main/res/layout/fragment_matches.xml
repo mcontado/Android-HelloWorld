@@ -18,18 +18,17 @@
         <ImageView
             android:id="@+id/card_image"
             android:layout_width="match_parent"
-            android:layout_height="260dp"
+            android:layout_height="@dimen/card_image_height"
             android:scaleType="centerCrop"
             tools:src="@drawable/channing_tatum" />
 
         <TextView
             android:id="@+id/card_title"
-            android:layout_width="280dp"
+            android:layout_width="@dimen/card_title_width"
             android:layout_height="40dp"
             android:layout_alignLeft="@+id/matchListFragmentContainer"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp"
-            android:fontFamily="sans-serif"
+            app:fontFamily="@font/gothambook"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             tools:text="@string/matches_ryan_gosling" />
 

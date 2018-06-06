@@ -25,12 +25,12 @@
     <string name="fragment_settings">This is where Settings will go</string>
     <string name="fragment_matches">This is where Matches will go</string>
     <string name="matches_ryan_gosling">Ryan Gosling</string>
-    <string name="distanceSearch">distance search in miles</string>
+    <string name="distanceSearch">Enter distance </string>
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
     <string name="radio_private">Private</string>
     <string name="radio_public">Public</string>
-    <string name="reminderTime">reminder time</string>
+    <string name="reminderTime">Reminder Time</string>
     <string name="age_range">Age Range</string>
     <string name="dailyReminderTime">Daily Reminder Time</string>
     <string name="distanceInMiles">Distance Search in Miles</string>
