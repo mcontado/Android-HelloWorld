@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="@dimen/linear_layout_marginHorizontal"
     android:orientation="vertical"
     android:id="@+id/my_fragment_profile"
@@ -16,7 +17,7 @@
         android:scaleType="fitXY"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        android:src="@drawable/mushroom_image" />
+        android:src="@drawable/mugi_icon" />
 
     <!-- Name, Age-->
     <LinearLayout
@@ -29,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
+            app:fontFamily="@font/gothambook"
             android:textSize="@dimen/profileText_textSize"
             android:text="@string/namePlaceHolder"/>
         <TextView
@@ -36,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
+            app:fontFamily="@font/gothambook"
             android:textSize="@dimen/profileText_textSize"
             android:text="@string/commaPlaceHolder"/>
         <TextView
@@ -43,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
+            app:fontFamily="@font/gothambook"
             android:textSize="@dimen/profileText_textSize"
             android:layout_marginHorizontal="@dimen/age_marginHorizontal"
             android:text="@string/agePlaceHolder"/>
@@ -50,6 +54,8 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="0,1"
@@ -65,10 +71,12 @@
             <TextView
                 android:id="@+id/emailLabelTextView"
                 android:text="@string/emailText"
+                app:fontFamily="@font/gothambook"
                 android:layout_marginRight="@dimen/textView_layoutMarginRight">
             </TextView>
             <TextView
                 android:id="@+id/emailTextViewFragmentProfile"
+                app:fontFamily="@font/gothambook"
                 android:textColor="@android:color/black">
             </TextView>
         </TableRow>
@@ -83,10 +91,12 @@
             <TextView
                 android:id="@+id/userNameLabelTextView"
                 android:text="@string/userNameText"
+                app:fontFamily="@font/gothambook"
                 android:layout_marginRight="@dimen/textView_layoutMarginRight">
             </TextView>
             <TextView
                 android:id="@+id/userNameTextViewFragmentProfile"
+                app:fontFamily="@font/gothambook"
                 android:textColor="@android:color/black">
             </TextView>
         </TableRow>
@@ -101,15 +111,17 @@
             <TextView
                 android:id="@+id/birthDateLabelTextView"
                 android:text="@string/birthDateButtonText"
+                app:fontFamily="@font/gothambook"
                 android:layout_marginRight="@dimen/textView_layoutMarginRight">
             </TextView>
             <TextView
                 android:id="@+id/birthDateTextViewFragmentProfile"
+                app:fontFamily="@font/gothambook"
                 android:textColor="@android:color/black">
             </TextView>
         </TableRow>
 
-        <!-- Description -->
+        <!-- About me -->
         <TableRow
             android:id="@+id/tableRowDescription"
             android:layout_width="fill_parent"
@@ -119,10 +131,12 @@
             <TextView
                 android:id="@+id/descriptionLabelTextView"
                 android:text="@string/selfDescription"
+                app:fontFamily="@font/gothambook"
                 android:layout_marginRight="@dimen/textView_layoutMarginRight">
             </TextView>
             <TextView
                 android:id="@+id/descriptionTextViewFragmentProfile"
+                app:fontFamily="@font/gothambook"
                 android:textColor="@android:color/black">
             </TextView>
         </TableRow>
@@ -136,10 +150,12 @@
 
             <TextView
                 android:id="@+id/occupationLabelTextView"
+                app:fontFamily="@font/gothambook"
                 android:layout_marginRight="@dimen/textView_layoutMarginRight"
                 android:text="@string/occupation"/>
             <TextView
                 android:id="@+id/occupationTextViewFragmentProfile"
+                app:fontFamily="@font/gothambook"
                 android:textColor="@android:color/black">
             </TextView>
         </TableRow>
@@ -151,6 +167,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="backToMain"
-        android:text="@string/back_button" />
+        android:text="@string/back_button"
+        android:background="@drawable/mybutton"
+        app:fontFamily="@font/gothambook"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/button_textSize"
+        android:layout_marginHorizontal="@dimen/profile_marginHorizontal" />
 
 </LinearLayout>

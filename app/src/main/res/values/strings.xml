@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">MyFirstApp</string>
     <string name="hello_world">Hello World!</string>
-    <string name="submit_button">Submit</string>
-    <string name="enter_name">Enter Name</string>
-    <string name="enter_email">Enter email address</string>
-    <string name="enter_username">Enter username</string>
-    <string name="enter_age">Current Age</string>
+    <string name="submit_button">Sign up</string>
+    <string name="enter_name">Name</string>
+    <string name="enter_email">Email address</string>
+    <string name="enter_username">Username</string>
+    <string name="enter_age">Age</string>
     <string name="enter_birthdate">dd/MM/yyyy</string>
-    <string name="back_button">Back to Main</string>
+    <string name="back_button">Back to main</string>
     <string name="thanks_signing">Thanks for signing</string>
     <string name="select_date">SELECT DATE</string>
     <string name="nameText">Name</string>
@@ -15,8 +15,8 @@
     <string name="userNameText">Username</string>
     <string name="ageText">Age</string>
     <string name="birthDateButtonText">Birth Date</string>
-    <string name="selfDescription">Description</string>
-    <string name="tell_about_yourself">Tell about yourself</string>
+    <string name="selfDescription">About me</string>
+    <string name="tell_about_yourself">Tell something about yourself</string>
     <string name="occupation">Occupation</string>
     <string name="enter_occupation">Your occupation</string>
     <string name="namePlaceHolder">Name</string>
@@ -25,12 +25,12 @@
     <string name="fragment_settings">This is where Settings will go</string>
     <string name="fragment_matches">This is where Matches will go</string>
     <string name="matches_ryan_gosling">Ryan Gosling</string>
-    <string name="distanceSearch">distance search in miles</string>
+    <string name="distanceSearch">Enter distance </string>
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
     <string name="radio_private">Private</string>
     <string name="radio_public">Public</string>
-    <string name="reminderTime">reminder time</string>
+    <string name="reminderTime">Set Time</string>
     <string name="age_range">Age Range</string>
     <string name="dailyReminderTime">Daily Reminder Time</string>
     <string name="distanceInMiles">Distance Search in Miles</string>
@@ -40,4 +40,5 @@
     <string name="location_message">Your Locations Settings is set to \'Off\'. Please Enable Location to use this app</string>
     <string name="location_settings">Location Settings</string>
     <string name="location_cancel">Cancel</string>
+    <string name="save_settings">Save Settings</string>
 </resources>
