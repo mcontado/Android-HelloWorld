@@ -55,7 +55,10 @@
             android:onClick="onBirthDateClick"
             android:text="@string/birthDateButtonText"
             android:textAllCaps="false"
-            app:fontFamily="@font/gothambook" />
+            app:fontFamily="@font/gothambook"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/datepickerbutton"/>
 
         <TextView
             android:id="@+id/birthDateTextView"
@@ -103,6 +106,7 @@
         android:text="@string/submit_button"
         android:textAllCaps="false"
         android:textSize="@dimen/button_textSize"
+        android:textColor="@color/white"
         app:fontFamily="@font/gothambook" />
 
     <TextView

@@ -23,6 +23,9 @@
         android:layout_height="wrap_content"
         android:text="@string/reminderTime"
         android:textAllCaps="false"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/datepickerbutton"
         android:fontFamily="@font/gothambook"
         android:onClick="onReminderTimeClick"/>
 
@@ -66,12 +69,14 @@
             android:id="@+id/radioMale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/gothambook"
             android:text="@string/radio_male" />
 
         <RadioButton
             android:id="@+id/radioFemale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/gothambook"
             android:text="@string/radio_female" />
     </RadioGroup>
 
@@ -90,18 +95,20 @@
         android:id="@+id/radioPrivacyGroup"
         android:layout_marginHorizontal="@dimen/profile_marginHorizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <RadioButton
             android:id="@+id/radioPrivate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/gothambook"
             android:text="@string/radio_private" />
 
         <RadioButton
             android:id="@+id/radioPublic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/gothambook"
             android:text="@string/radio_public" />
     </RadioGroup>
 
@@ -133,6 +140,7 @@
         android:fontFamily="@font/gothambook"
         android:onClick="onSaveSettings"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="@dimen/button_textSize"/>
 
 </LinearLayout>

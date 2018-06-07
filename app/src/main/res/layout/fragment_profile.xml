@@ -121,7 +121,7 @@
             </TextView>
         </TableRow>
 
-        <!-- Description -->
+        <!-- About me -->
         <TableRow
             android:id="@+id/tableRowDescription"
             android:layout_width="fill_parent"
@@ -171,6 +171,7 @@
         android:background="@drawable/mybutton"
         app:fontFamily="@font/gothambook"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="@dimen/button_textSize"
         android:layout_marginHorizontal="@dimen/profile_marginHorizontal" />
 
